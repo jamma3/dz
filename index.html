@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جمّع - Jamma3</title>
+<style>
+:root {
+  --green: #1E3A5F;
+  --green-light: #2E4F7A;
+  --amber: #D4785C;
+  --amber-light: #E59276;
+  --bg: #F7F8FC;
+  --surface: #FFFFFF;
+  --text: #1A1D23;
+  --text-secondary: #6B7280;
+  --border: #E5E7EB;
+  --muted: #9CA3AF;
+  --danger: #EF4444;
+  --success: #10B981;
+  --radius: 16px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --transition: all 0.2s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+a{color:var(--green);text-decoration:none}
+a:hover{color:var(--green-light)}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:var(--font);border:none;background:none;font-size:inherit}
+input,select,textarea{font-family:var(--font);font-size:inherit;border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;background:var(--surface);color:var(--text);width:100%;transition:var(--transition);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(212,120,92,0.12)}
+textarea{resize:vertical;min-height:80px}
+::selection{background:var(--amber);color:#fff}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:var(--radius);font-weight:600;font-size:14px;transition:var(--transition);line-height:1.4;text-align:center;justify-content:center}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-2px);box-shadow:0 6px 16px rgba(30,58,95,0.3)}
+.btn-secondary{background:var(--amber);color:#fff}
+.btn-secondary:hover{background:var(--amber-light);transform:translateY(-2px);box-shadow:0 6px 16px rgba(212,120,92,0.3)}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green)}
+.btn-outline:hover{background:var(--green);color:#fff}
+.btn-ghost{color:var(--text-secondary)}
+.btn-ghost:hover{color:var(--text);background:var(--border)}
+.btn-sm{padding:6px 16px;font-size:13px}
+.btn-lg{padding:14px 32px;font-size:16px}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{background:#c0392b}
+.btn-block{width:100%}
+.card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:var(--transition)}
+.card:hover{box-shadow:var(--shadow)}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.badge-green{background:#E8EEF5;color:var(--green)}
+.badge-amber{background:#FDF0EB;color:var(--amber)}
+.badge-blue{background:#E3F2FD;color:#1565C0}
+.badge-red{background:#FEE8E8;color:var(--danger)}
+.badge-time{background:var(--text);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:4px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1)}
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--amber),var(--green));transition:width 0.5s ease}
+.tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:12px;background:var(--border);color:var(--text-secondary);margin:2px}
+.page{display:none;animation:fadeIn 0.3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.flex{display:flex}
+.flex-col{flex-direction:column}
+.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.justify-center{justify-content:center}
+.gap-8{gap:8px}
+.gap-12{gap:12px}
+.gap-16{gap:16px}
+.gap-20{gap:20px}
+.gap-24{gap:24px}
+.mt-8{margin-top:8px}
+.mt-16{margin-top:16px}
+.mt-24{margin-top:24px}
+.mt-32{margin-top:32px}
+.mb-8{margin-bottom:8px}
+.mb-16{margin-bottom:16px}
+.mb-24{margin-bottom:24px}
+.mb-32{margin-bottom:32px}
+.text-center{text-align:center}
+.text-muted{color:var(--text-secondary)}
+.text-sm{font-size:13px}
+.text-xs{font-size:12px}
+.text-lg{font-size:18px}
+.text-xl{font-size:24px}
+.text-2xl{font-size:32px}
+.font-bold{font-weight:700}
+.font-semibold{font-weight:600}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hidden{display:none!important}
+.w-full{width:100%}
+.cat-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.cat-pill{padding:6px 18px;border-radius:20px;font-size:13px;font-weight:600;background:var(--border);color:var(--text-secondary);cursor:pointer;transition:var(--transition);border:2px solid transparent}
+.cat-pill:hover{background:var(--green);color:#fff}
+.cat-pill.active{background:var(--green);color:#fff;border-color:var(--amber)}
+.hot-deal-category{margin-bottom:24px}
+.hot-deal-cat-title{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--text)}
+
+/* Header */
+.header{position:sticky;top:0;z-index:100;background:rgba(247,248,252,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.header-logo{display:flex;align-items:center;gap:8px;font-size:24px;font-weight:800;color:var(--green);letter-spacing:-0.5px}
+.header-logo span{color:var(--amber);position:relative}
+.header-logo span::after{content:'●';position:absolute;top:-4px;right:-8px;font-size:8px;color:var(--amber)}
+.header-nav{display:flex;align-items:center;gap:4px}
+.header-nav a{padding:8px 14px;border-radius:8px;color:var(--text-secondary);font-size:14px;font-weight:500;transition:var(--transition)}
+.header-nav a:hover,.header-nav a.active{color:var(--text);background:var(--border)}
+.header-actions{display:flex;align-items:center;gap:8px}
+.lang-btn{padding:6px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text-secondary);transition:var(--transition)}
+.lang-btn:hover{background:var(--border);color:var(--text)}
+.cart-btn{position:relative;padding:8px;border-radius:8px;color:var(--text-secondary);transition:var(--transition)}
+.cart-btn:hover{background:var(--border);color:var(--text)}
+.cart-count{position:absolute;top:-2px;right:-2px;background:var(--danger);color:#fff;font-size:10px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.mobile-menu-btn{display:none;padding:8px;border-radius:8px;color:var(--text-secondary)}
+
+/* Hero */
+.hero{display:flex;align-items:center;gap:48px;padding:60px 0;position:relative;min-height:480px}
+.hero::before{content:'';position:absolute;top:-120px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(212,120,92,0.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(30,58,95,0.04) 0%,transparent 70%);pointer-events:none}
+.hero-content{flex:1;min-width:0}
+.hero h1{font-size:52px;font-weight:800;line-height:1.2;margin-bottom:16px;letter-spacing:-0.5px}
+.hero h1 span{color:var(--amber);position:relative}
+.hero h1 span::after{content:'';position:absolute;bottom:4px;left:0;right:0;height:8px;background:var(--amber);opacity:0.15;border-radius:4px}
+.hero p{font-size:18px;color:var(--text-secondary);max-width:520px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-visual{flex:0 0 400px;display:flex;align-items:center;justify-content:center}
+.hero-visual svg{width:100%;max-width:420px;height:auto}
+
+/* Section headers */
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:32px;font-weight:700;margin-bottom:8px}
+.section-header p{color:var(--text-secondary);font-size:16px}
+
+/* Categories */
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.cat-card{text-align:center;padding:24px 16px;cursor:pointer;transition:var(--transition)}
+.cat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.cat-icon{font-size:36px;margin-bottom:8px;display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:20px;background:var(--bg);transition:var(--transition)}
+.cat-card:hover .cat-icon{background:var(--border);transform:scale(1.05)}
+.cat-name{font-size:14px;font-weight:600;color:var(--text)}
+
+/* Product card */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.product-card{cursor:pointer;transition:var(--transition)}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.product-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;border-radius:16px 16px 0 0}
+.product-body{padding:16px}
+.product-name{font-size:16px;font-weight:600;margin-bottom:4px}
+.product-supplier{font-size:13px;color:var(--muted);margin-bottom:8px}
+.product-price{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.product-price-current{font-size:20px;font-weight:700;color:var(--green)}
+.product-price-original{font-size:14px;color:var(--muted);text-decoration:line-through}
+.product-bulk{font-size:12px;color:var(--amber);font-weight:600}
+.product-meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.product-badge{position:absolute;top:12px;right:12px}
+
+/* Product detail */
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:40px 0}
+.product-detail-img{height:400px;display:flex;align-items:center;justify-content:center;font-size:140px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border)}
+.product-info h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.product-info .supplier-name{color:var(--muted);margin-bottom:16px}
+.pricing-table{width:100%;border-collapse:collapse;margin:16px 0}
+.pricing-table th,.pricing-table td{padding:10px 14px;text-align:center;border:1px solid var(--border)}
+.pricing-table th{background:var(--green);color:#fff;font-size:14px;font-weight:600}
+.pricing-table tr:nth-child(even){background:#F8F6F2}
+.pricing-table .highlight{background:#FFF3E0;font-weight:700}
+
+/* Auth pages */
+.auth-page{max-width:440px;margin:60px auto;padding:32px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border)}
+.auth-page h2{font-size:24px;font-weight:700;text-align:center;margin-bottom:24px}
+.auth-tabs{display:flex;margin-bottom:24px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.auth-tab{flex:1;padding:10px;text-align:center;font-weight:600;font-size:14px;cursor:pointer;transition:var(--transition);background:var(--bg)}
+.auth-tab.active{background:var(--green);color:#fff}
+.auth-tab:hover:not(.active){background:var(--border)}
+
+/* Dashboard */
+.dashboard{display:grid;grid-template-columns:240px 1fr;gap:24px;padding:24px 0;min-height:calc(100vh - 64px)}
+.dashboard-sidebar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.dashboard-sidebar .user-info{text-align:center;padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:12px}
+.dashboard-sidebar .user-avatar{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;margin:0 auto 8px}
+.dashboard-nav{display:flex;flex-direction:column;gap:4px}
+.dashboard-nav a{padding:10px 14px;border-radius:8px;color:var(--text-secondary);font-size:14px;font-weight:500;transition:var(--transition);display:flex;align-items:center;gap:10px}
+.dashboard-nav a:hover,.dashboard-nav a.active{background:var(--border);color:var(--text)}
+.dashboard-content{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.dashboard-content h2{font-size:22px;font-weight:700;margin-bottom:20px}
+
+/* Cart */
+.cart-page{padding:32px 0}
+.cart-items{display:flex;flex-direction:column;gap:12px}
+.cart-item{display:flex;align-items:center;gap:16px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+.cart-item-img{width:60px;height:60px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--bg);flex-shrink:0}
+.cart-item-info{flex:1}
+.cart-item-name{font-weight:600}
+.cart-item-price{font-size:14px;color:var(--muted)}
+.cart-item-qty{display:flex;align-items:center;gap:8px}
+.qty-btn{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--border);font-weight:700;transition:var(--transition)}
+.qty-btn:hover{background:var(--muted);color:#fff}
+.cart-summary{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;position:sticky;top:88px}
+.cart-summary h3{font-size:18px;font-weight:700;margin-bottom:16px}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}
+.summary-row.total{border-top:2px solid var(--border);margin-top:8px;padding-top:12px;font-size:18px;font-weight:700}
+
+/* Checkout */
+.checkout-form{max-width:600px;margin:0 auto}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--text-secondary)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;animation:fadeIn 0.2s ease}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--radius);padding:32px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
+.modal h3{font-size:20px;font-weight:700;margin-bottom:16px}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{text-align:center;padding:32px 16px}
+.step-num{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;margin:0 auto 16px;box-shadow:0 4px 12px rgba(30,58,95,0.25)}
+.step h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.step p{color:var(--text-secondary);font-size:14px}
+
+/* Footer */
+.footer{background:var(--text);color:rgba(255,255,255,0.8);padding:40px 0 24px;margin-top:60px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer h3{color:#fff;font-size:16px;font-weight:600;margin-bottom:12px}
+.footer a{color:rgba(255,255,255,0.7);font-size:14px;display:block;margin-bottom:8px}
+.footer a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;text-align:center;font-size:13px}
+
+/* Empty state */
+.empty-state{text-align:center;padding:60px 20px}
+.empty-icon{font-size:64px;margin-bottom:16px}
+.empty-state h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.empty-state p{color:var(--text-secondary);margin-bottom:24px}
+
+/* Supplier product form */
+.form-card{max-width:700px;margin:0 auto;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+.form-card h2{font-size:22px;font-weight:700;margin-bottom:24px}
+.form-card .form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px}
+
+/* Toggle switch */
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:var(--border);border-radius:12px;transition:var(--transition)}
+.toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:var(--transition)}
+.toggle input:checked+.toggle-slider{background:var(--green)}
+.toggle input:checked+.toggle-slider:before{transform:translateX(20px)}
+
+/* Referral */
+.ref-card{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;padding:24px;border-radius:var(--radius);margin-bottom:20px}
+.ref-card h3{color:#fff;margin-bottom:8px}
+.ref-code{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.15);padding:10px 16px;border-radius:8px;font-size:20px;font-weight:700;letter-spacing:2px;margin:12px 0}
+.ref-code button{color:#fff;font-size:14px;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.2)}
+.ref-code button:hover{background:rgba(255,255,255,0.3)}
+.ref-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.ref-stat{text-align:center;background:rgba(255,255,255,0.1);padding:12px;border-radius:8px}
+.ref-stat-value{font-size:24px;font-weight:700}
+.ref-stat-label{font-size:12px;opacity:0.8}
+
+/* Search */
+.search-bar{display:flex;gap:12px;margin-bottom:24px}
+.search-bar input{flex:1}
+.filter-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.filter-bar select{width:auto;min-width:160px}
+
+/* Notification toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:300;padding:12px 24px;border-radius:var(--radius);color:#fff;font-weight:600;font-size:14px;animation:slideUp 0.3s ease;box-shadow:var(--shadow-lg)}
+.toast-success{background:var(--green)}
+.toast-error{background:var(--danger)}
+.toast-info{background:var(--amber)}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* Supplier-specific */
+.supplier-settings{padding:24px;background:var(--bg);border-radius:var(--radius);margin-top:16px}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.setting-row:last-child{border-bottom:none}
+
+/* RTL specific overrides */
+[dir="ltr"] .cart-count{right:auto;left:-2px}
+[dir="ltr"] .product-badge{right:auto;left:12px}
+[dir="ltr"] .toggle input:checked+.toggle-slider:before{transform:translateX(-20px)}
+
+/* Responsive */
+@media(max-width:968px){
+  .product-detail{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .dashboard{grid-template-columns:1fr}
+  .dashboard-sidebar{display:none}
+  .dashboard-sidebar.open{display:block;position:fixed;top:64px;left:0;right:0;bottom:0;z-index:50;border-radius:0;overflow-y:auto}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero{flex-direction:column;text-align:center;padding:40px 0;min-height:auto}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero h1{font-size:32px}
+  .hero-actions{justify-content:center}
+  .hero-visual{flex-basis:auto;max-width:300px;margin-top:24px}
+}
+@media(max-width:640px){
+  .header-nav{display:none}
+  .mobile-menu-btn{display:flex}
+  .header-nav.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);padding:16px;z-index:50;box-shadow:var(--shadow-lg)}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .categories-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .hero{padding:40px 0}
+  .section-header h2{font-size:24px}
+  .cart-item{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home" class="header-logo" onclick="return navigate('home')">
+        جمّع <span>Jamma3</span>
+      </a>
+      <nav class="header-nav" id="mainNav">
+        <a href="#home" data-page="home" onclick="return navigate('home')" class="active">الرئيسية</a>
+        <a href="#products" data-page="products" onclick="return navigate('products')">المنتجات</a>
+        <a href="#how-it-works" data-page="how-it-works" onclick="return navigate('how-it-works')">كيف يعمل</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="langBtn" onclick="toggleLang()">FR</button>
+        <button class="cart-btn" onclick="navigate('cart')" title="السلة">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="btn btn-primary btn-sm" id="loginBtn" onclick="navigate('login')">تسجيل الدخول</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HOME ===== -->
+    <section id="page-home" class="page active">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-content">
+            <h1>في لمتنا قوة ... <span>و في جماعتنا وفر</span></h1>
+            <p>في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.</p>
+            <div class="hero-actions">
+              <a href="#products" class="btn btn-primary btn-lg" onclick="return navigate('products')">تصفح المنتجات</a>
+              <a href="#how-it-works" class="btn btn-outline btn-lg" onclick="return navigate('how-it-works')">كيف يعمل</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <svg viewBox="0 0 420 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer glow rings -->
+              <circle cx="210" cy="185" r="170" fill="rgba(30,58,95,0.03)"/>
+              <circle cx="210" cy="185" r="130" fill="rgba(212,120,92,0.05)"/>
+              <circle cx="210" cy="185" r="90" fill="rgba(30,58,95,0.04)"/>
+
+              <!-- Three people figures coming together (group buying) -->
+              <!-- Person 1 - left -->
+              <g transform="translate(125, 140)">
+                <circle cx="0" cy="-38" r="18" fill="#1E3A5F"/>
+                <path d="M-22 15 C-22 -10 22 -10 22 15 L22 40 L18 40 L18 25 L-18 25 L-18 40 L-22 40 Z" fill="#1E3A5F" opacity="0.85"/>
+                <circle cx="-12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
+                <circle cx="12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
+              </g>
+
+              <!-- Person 2 - center (highlighted) -->
+              <g transform="translate(210, 130)">
+                <circle cx="0" cy="-42" r="20" fill="#D4785C"/>
+                <path d="M-24 15 C-24 -12 24 -12 24 15 L24 45 L20 45 L20 28 L-20 28 L-20 45 L-24 45 Z" fill="#D4785C" opacity="0.9"/>
+                <circle cx="-10" cy="-42" r="3.5" fill="#fff" opacity="0.8"/>
+                <circle cx="10" cy="-42" r="3.5" fill="#fff" opacity="0.8"/>
+              </g>
+
+              <!-- Person 3 - right -->
+              <g transform="translate(295, 140)">
+                <circle cx="0" cy="-38" r="18" fill="#1E3A5F"/>
+                <path d="M-22 15 C-22 -10 22 -10 22 15 L22 40 L18 40 L18 25 L-18 25 L-18 40 L-22 40 Z" fill="#1E3A5F" opacity="0.85"/>
+                <circle cx="-12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
+                <circle cx="12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
+              </g>
+
+              <!-- Connecting lines (community bond) -->
+              <path d="M147 140 Q180 100 210 120" stroke="#D4785C" stroke-width="2" stroke-dasharray="5,4" opacity="0.4"/>
+              <path d="M273 140 Q240 100 210 120" stroke="#D4785C" stroke-width="2" stroke-dasharray="5,4" opacity="0.4"/>
+              <line x1="160" y1="165" x2="260" y2="165" stroke="#1E3A5F" stroke-width="1.5" opacity="0.15"/>
+
+              <!-- Shopping bag icon at bottom center -->
+              <g transform="translate(190, 210)">
+                <rect x="0" y="8" width="40" height="35" rx="6" fill="#1E3A5F" opacity="0.12" stroke="#1E3A5F" stroke-width="2" stroke-opacity="0.2"/>
+                <path d="M8 8 C8 -2 32 -2 32 8" fill="none" stroke="#1E3A5F" stroke-width="2" stroke-opacity="0.2"/>
+                <path d="M14 18 L26 18" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M14 25 L26 25" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M14 32 L22 32" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+
+              <!-- Price / discount sparkles -->
+              <g transform="translate(100, 240)" opacity="0.6">
+                <text font-size="14" fill="#D4785C" font-weight="700">-30%</text>
+              </g>
+              <g transform="translate(290, 240)" opacity="0.6">
+                <text font-size="14" fill="#1E3A5F" font-weight="700">-40%</text>
+              </g>
+
+              <!-- Floating decorative dots -->
+              <circle cx="80" cy="100" r="4" fill="#D4785C" opacity="0.2"/>
+              <circle cx="340" cy="100" r="4" fill="#1E3A5F" opacity="0.2"/>
+              <circle cx="70" cy="320" r="3" fill="#D4785C" opacity="0.15"/>
+              <circle cx="350" cy="320" r="3" fill="#1E3A5F" opacity="0.15"/>
+              <circle cx="210" cy="340" r="5" fill="#D4785C" opacity="0.1"/>
+              <circle cx="145" cy="90" r="2.5" fill="#1E3A5F" opacity="0.1"/>
+              <circle cx="275" cy="85" r="2.5" fill="#D4785C" opacity="0.12"/>
+
+              <!-- Brand name at bottom -->
+              <g transform="translate(210, 378)">
+                <text text-anchor="middle" font-size="28" font-weight="800" fill="#1E3A5F" font-family="system-ui, sans-serif" letter-spacing="1">جمّع</text>
+                <text text-anchor="middle" font-size="16" font-weight="600" fill="#D4785C" font-family="system-ui, sans-serif" y="24">Jamma3</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2 id="hotDealsTitle">أفضل العروض الجماعية</h2>
+          <p id="hotDealsSub">عروض شارفت على التخفيض - انضم الآن</p>
+        </div>
+        <div class="cat-pills" id="hotDealsCatPills"></div>
+        <div class="product-grid" id="hotDealsGrid"></div>
+
+        <div class="section-header mt-32">
+          <h2>تصفح حسب الفئة</h2>
+          <p>اكتشف منتجات من أفضل الموردين الجزائريين</p>
+        </div>
+        <div class="categories-grid mb-32" id="categoriesGrid"></div>
+
+        <div class="section-header mt-32">
+          <h2>منتجات مميزة</h2>
+          <p>منتجات تحظى بطلبات جماعية حالياً</p>
+        </div>
+        <div class="product-grid" id="featuredProducts"></div>
+
+        <div class="section-header mt-32">
+          <h2>لماذا جمّع؟</h2>
+        </div>
+        <div class="steps mb-32">
+          <div class="step card">
+            <div class="step-num">1</div>
+            <h3>اختر المنتج</h3>
+            <p>تصفح المنتجات من موردين موثوقين واختر ما يناسبك</p>
+          </div>
+          <div class="step card">
+            <div class="step-num">2</div>
+            <h3>انضم للطلب الجماعي</h3>
+            <p>كلما زاد عدد المشتركين، انخفض السعر للجميع</p>
+          </div>
+          <div class="step card">
+            <div class="step-num">3</div>
+            <h3>استلم المنتج</h3>
+            <p>استمتع بمنتجات عالية الجودة بأفضل الأسعار</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTS ===== -->
+    <section id="page-products" class="page">
+      <div class="container" style="padding-top:32px">
+        <div class="section-header">
+          <h2>جميع المنتجات</h2>
+          <p>اختر من بين منتجات متنوعة من أفضل الموردين</p>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+          <select id="catFilter" onchange="filterProducts()"><option value="">جميع الفئات</option></select>
+          <select id="supplierFilter" onchange="filterProducts()"><option value="">جميع الموردين</option></select>
+        </div>
+        <div class="product-grid" id="allProducts"></div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCT DETAIL ===== -->
+    <section id="page-product-detail" class="page">
+      <div class="container" id="productDetailContainer"></div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="page-how-it-works" class="page">
+      <div class="container" style="padding-top:40px">
+        <div class="section-header">
+          <h2>كيف يعمل جمّع؟</h2>
+          <p>منصة الشراء الجماعي الأولى في الجزائر</p>
+        </div>
+        <div class="grid-2" style="max-width:800px;margin:0 auto">
+          <div class="card" style="padding:32px">
+            <div class="step-num" style="margin:0 0 16px">1</div>
+            <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">للمشترين</h3>
+            <ul style="list-style:none;color:var(--text-secondary);font-size:14px;line-height:2">
+              <li>✓ تصفح المنتجات بدون حساب</li>
+              <li>✓ أنشئ حساب واحصل على كود إحالة</li>
+              <li>✓ انضم للطلبات الجماعية للحصول على تخفيضات</li>
+              <li>✓ ادع أصدقائك واكسب مكافآت</li>
+              <li>✓ استلم المنتجات في باب منزلك</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:32px">
+            <div class="step-num" style="margin:0 0 16px">2</div>
+            <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">للموردين</h3>
+            <ul style="list-style:none;color:var(--text-secondary);font-size:14px;line-height:2">
+              <li>✓ أنشئ حساب مورد مجاناً</li>
+              <li>✓ أضف منتجاتك مع تخفيضات الكميات</li>
+              <li>✓ اختر نظام الدفع: اشتراك شهري أو حسب الطلب</li>
+              <li>✓ حدد خيار التغليف (أنت أو المنصة)</li>
+              <li>✓ وصل لعدد أكبر من الزبائن</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-32">
+          <a href="#register" class="btn btn-primary btn-lg" onclick="return navigate('register')">انضم إلينا الآن</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CART ===== -->
+    <section id="page-cart" class="page">
+      <div class="container cart-page">
+        <div class="section-header">
+          <h2>سلة المشتريات</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start">
+          <div id="cartItems" class="cart-items"></div>
+          <div id="cartSummary" class="cart-summary"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOGIN ===== -->
+    <section id="page-login" class="page">
+      <div class="auth-page">
+        <h2>تسجيل الدخول</h2>
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="setLoginRole('customer')">زبون</button>
+          <button class="auth-tab" onclick="setLoginRole('supplier')">مورد</button>
+        </div>
+        <form onsubmit="return handleLogin(event)">
+          <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="loginEmail" required placeholder="أدخل بريدك الإلكتروني">
+          </div>
+          <div class="form-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="loginPassword" required placeholder="أدخل كلمة المرور">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">تسجيل الدخول</button>
+        </form>
+        <p class="text-center mt-16 text-sm">ليس لديك حساب؟ <a href="#register" onclick="return navigate('register')" style="font-weight:600">إنشاء حساب</a></p>
+      </div>
+    </section>
+
+    <!-- ===== REGISTER ===== -->
+    <section id="page-register" class="page">
+      <div class="auth-page">
+        <h2>إنشاء حساب جديد</h2>
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="setRegisterRole('customer')">زبون</button>
+          <button class="auth-tab" onclick="setRegisterRole('supplier')">مورد</button>
+        </div>
+        <form onsubmit="return handleRegister(event)">
+          <div id="regReferralField" class="form-group">
+            <label>كود الإحالة (اختياري)</label>
+            <input type="text" id="regReferral" placeholder="أدخل كود الإحالة إن وجد">
+          </div>
+          <div class="form-group">
+            <label>الاسم الكامل</label>
+            <input type="text" id="regName" required placeholder="الاسم الكامل">
+          </div>
+          <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="regEmail" required placeholder="أدخل بريدك الإلكتروني">
+          </div>
+          <div class="form-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="regPassword" required minlength="4" placeholder="على الأقل 4 أحرف">
+          </div>
+          <div id="regSupplierFields" class="hidden">
+            <div class="form-group">
+              <label>اسم الشركة / المتجر</label>
+              <input type="text" id="regCompany" placeholder="اسم الشركة">
+            </div>
+            <div class="form-group">
+              <label>رقم الهاتف</label>
+              <input type="text" id="regPhone" placeholder="رقم الهاتف">
+            </div>
+            <div class="form-group">
+              <label>نظام الدفع</label>
+              <select id="regPayment">
+                <option value="monthly">اشتراك شهري (5000 دج/شهر)</option>
+                <option value="per-order">دفع حسب الطلب (10% من كل طلب)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>خيار التغليف</label>
+              <select id="regPackaging">
+                <option value="supplier">أقوم بالتغليف بنفسي</option>
+                <option value="platform">المنصة تتولى التغليف</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">إنشاء الحساب</button>
+        </form>
+        <p class="text-center mt-16 text-sm">لديك حساب بالفعل؟ <a href="#login" onclick="return navigate('login')" style="font-weight:600">تسجيل الدخول</a></p>
+      </div>
+    </section>
+
+    <!-- ===== CUSTOMER DASHBOARD ===== -->
+    <section id="page-customer-dashboard" class="page">
+      <div class="container">
+        <div class="dashboard">
+          <aside class="dashboard-sidebar" id="dashSidebar">
+            <div class="user-info" id="dashUserInfo"></div>
+            <nav class="dashboard-nav">
+              <a href="#" data-dash="overview" class="active" onclick="return dashNav('overview')">📊 نظرة عامة</a>
+              <a href="#" data-dash="orders" onclick="return dashNav('orders')">📦 طلباتي</a>
+              <a href="#" data-dash="referral" onclick="return dashNav('referral')">🔗 نظام الإحالة</a>
+              <a href="#" data-dash="profile" onclick="return dashNav('profile')">👤 ملفي الشخصي</a>
+              <a href="#" onclick="return handleLogout()" style="color:var(--danger)">🚪 تسجيل الخروج</a>
+            </nav>
+          </aside>
+          <div class="dashboard-content" id="dashContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUPPLIER DASHBOARD ===== -->
+    <section id="page-supplier-dashboard" class="page">
+      <div class="container">
+        <div class="dashboard">
+          <aside class="dashboard-sidebar" id="suppDashSidebar">
+            <div class="user-info" id="suppDashUserInfo"></div>
+            <nav class="dashboard-nav">
+              <a href="#" data-supp="overview" class="active" onclick="return suppNav('overview')">📊 نظرة عامة</a>
+              <a href="#" data-supp="products" onclick="return suppNav('products')">📦 منتجاتي</a>
+              <a href="#" data-supp="orders" onclick="return suppNav('orders')">📋 الطلبات</a>
+              <a href="#" data-supp="settings" onclick="return suppNav('settings')">⚙️ الإعدادات</a>
+              <a href="#" onclick="return handleLogout()" style="color:var(--danger)">🚪 تسجيل الخروج</a>
+            </nav>
+          </aside>
+          <div class="dashboard-content" id="suppDashContent"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="font-size:20px;font-weight:800;color:#fff">جمّع <span style="color:var(--amber)">Jamma3</span></h3>
+          <p style="font-size:14px;margin-bottom:16px">أول منصة شراء جماعي في الجزائر. نوصل المنتجين بالمشترين بأفضل الأسعار.</p>
+        </div>
+        <div>
+          <h3>روابط سريعة</h3>
+          <a href="#products" onclick="return navigate('products')">المنتجات</a>
+          <a href="#how-it-works" onclick="return navigate('how-it-works')">كيف يعمل</a>
+          <a href="#register" onclick="return navigate('register')">انضم كمورد</a>
+        </div>
+        <div>
+          <h3>فئات</h3>
+          <a href="#products" onclick="setCategory('dates');return navigate('products')">تمور</a>
+          <a href="#products" onclick="setCategory('oils');return navigate('products')">زيوت</a>
+          <a href="#products" onclick="setCategory('honey');return navigate('products')">عسل</a>
+          <a href="#products" onclick="setCategory('spices');return navigate('products')">توابل</a>
+          <a href="#products" onclick="setCategory('handicrafts');return navigate('products')">حرف يدوية</a>
+          <a href="#products" onclick="setCategory('smartphones');return navigate('products')">هواتف</a>
+          <a href="#products" onclick="setCategory('clothing-men');return navigate('products')">ملابس رجالية</a>
+          <a href="#products" onclick="setCategory('clothing-women');return navigate('products')">ملابس نسائية</a>
+          <a href="#products" onclick="setCategory('watches');return navigate('products')">ساعات</a>
+        </div>
+        <div>
+          <h3>تواصل معنا</h3>
+          <a href="#">contact@jamma3.dz</a>
+          <a href="#">+213 555 12 34 56</a>
+          <a href="#">الجزائر العاصمة</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 جمّع Jamma3. منصة الشراء الجماعي في الجزائر</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+// ========== DATA ==========
+const DEFAULT_DATA = {
+  categories: [
+    {id:'dates',icon:'🌴',nameAr:'تمور',nameFr:'Dattes'},
+    {id:'oils',icon:'🫒',nameAr:'زيوت',nameFr:'Huiles'},
+    {id:'honey',icon:'🍯',nameAr:'عسل',nameFr:'Miel'},
+    {id:'spices',icon:'🌶️',nameAr:'توابل',nameFr:'Épices'},
+    {id:'couscous',icon:'🥘',nameAr:'كسكس',nameFr:'Couscous'},
+    {id:'handicrafts',icon:'🏺',nameAr:'حرف يدوية',nameFr:'Artisanat'},
+    {id:'traditional',icon:'🫧',nameAr:'منتجات تقليدية',nameFr:'Produits traditionnels'},
+    {id:'smartphones',icon:'📱',nameAr:'هواتف و أكسسوارات',nameFr:'Téléphones & Accessoires'},
+    {id:'clothing-men',icon:'👔',nameAr:'ملابس رجالية',nameFr:'Vêtements Hommes'},
+    {id:'clothing-women',icon:'👗',nameAr:'ملابس نسائية',nameFr:'Vêtements Femmes'},
+    {id:'watches',icon:'⌚',nameAr:'ساعات',nameFr:'Montres'},
+  ],
+  suppliers: [
+    {id:1,name:'Terroir d\'Algérie',email:'contact@terroirdz.dz',phone:'0555 12 34 56',company:'SARL Terroir d\'Algérie',city:'الجزائر العاصمة',payment:'monthly',packaging:'platform',password:'1234',role:'supplier',img:'🏪'},
+    {id:2,name:'Saveurs du Sud',email:'contact@saveurs-sud.dz',phone:'0666 78 90 12',company:'Saveurs du Sud',city:'بسكرة',payment:'monthly',packaging:'platform',password:'1234',role:'supplier',img:'🌴'},
+    {id:3,name:'Artisanat Berbère',email:'contact@artisanat.dz',phone:'0777 34 56 78',company:'Artisanat Berbère',city:'تيزي وزو',payment:'per-order',packaging:'supplier',password:'1234',role:'supplier',img:'🏺'},
+    {id:4,name:'Huiles & Miels Kabyles',email:'contact@huiles-kabyles.dz',phone:'0555 98 76 54',company:'Huiles & Miels Kabyles',city:'بجاية',payment:'monthly',packaging:'supplier',password:'1234',role:'supplier',img:'🍯'},
+    {id:5,name:'TechPro Algérie',email:'contact@techpro.dz',phone:'0555 55 55 55',company:'SARL TechPro Algérie',city:'الجزائر العاصمة',payment:'monthly',packaging:'platform',password:'1234',role:'supplier',img:'📱'},
+    {id:6,name:'Mode & Style',email:'contact@mode-style.dz',phone:'0666 66 66 66',company:'Mode & Style',city:'وهران',payment:'monthly',packaging:'supplier',password:'1234',role:'supplier',img:'👔'},
+  ],
+  products: [
+    {id:1,supplierId:1,nameAr:'دقلة نور فاخرة',nameFr:'Deglet Nour Premium',category:'dates',price:1500,bulkTiers:[{qty:5,price:1300},{qty:20,price:1000},{qty:50,price:750}],img:'🌴',descAr:'تمر دقلة نور فاخر من واحات بسكرة، طعم لا مثيل له',descFr:'Dattes Deglet Nour premium des oasis de Biskra, goût incomparable'},
+    {id:2,supplierId:1,nameAr:'زيت زيتون بكر ممتاز',nameFr:'Huile d\'Olive Vierge Extra',category:'oils',price:2000,bulkTiers:[{qty:6,price:1700},{qty:12,price:1500},{qty:24,price:1200}],img:'🫒',descAr:'زيت زيتون بكر ممتاز من بساتين القبائل',descFr:'Huile d\'olive vierge extra des vergers de Kabylie'},
+    {id:3,supplierId:4,nameAr:'عسل جبلي طبيعي',nameFr:'Miel de Montagne Naturel',category:'honey',price:1800,bulkTiers:[{qty:6,price:1550},{qty:12,price:1300},{qty:24,price:1000}],img:'🍯',descAr:'عسل جبلي طبيعي 100% من منطقة البليدة',descFr:'Miel de montagne 100% naturel de la région de Blida'},
+    {id:4,supplierId:2,nameAr:'رأس الحانوت',nameFr:'Ras el Hanout',category:'spices',price:400,bulkTiers:[{qty:10,price:320},{qty:25,price:250},{qty:50,price:180}],img:'🌶️',descAr:'خليط توابل تقليدية فاخرة',descFr:'Mélange d\'épices traditionnelles de luxe'},
+    {id:5,supplierId:1,nameAr:'كسكس تقليدي',nameFr:'Couscous Traditionnel',category:'couscous',price:350,bulkTiers:[{qty:10,price:280},{qty:25,price:220},{qty:50,price:160}],img:'🥘',descAr:'كسكس تقليدي من أفضل الحبوب الجزائرية',descFr:'Couscous traditionnel des meilleures céréales algériennes'},
+    {id:6,supplierId:3,nameAr:'طبق خزفي مطلي',nameFr:'Plat en Céramique Peinte',category:'handicrafts',price:2500,bulkTiers:[{qty:5,price:2100},{qty:10,price:1800},{qty:20,price:1400}],img:'🏺',descAr:'طبق خزفي تقليدي مطلي يدوياً من صنع حرفيي القبائل',descFr:'Plat en céramique traditionnel peint à la main par les artisans kabyles'},
+    {id:7,supplierId:2,nameAr:'زيت الأركان',nameFr:'Huile d\'Argan',category:'oils',price:2200,bulkTiers:[{qty:4,price:1900},{qty:10,price:1600},{qty:20,price:1300}],img:'💧',descAr:'زيت الأركان التجميلي الأصيل من جنوب الجزائر',descFr:'Huile d\'argan cosmétique authentique du Sud algérien'},
+    {id:8,supplierId:4,nameAr:'عسل السدر الملكي',nameFr:'Miel de Jujubier Royal',category:'honey',price:3000,bulkTiers:[{qty:3,price:2600},{qty:8,price:2200},{qty:15,price:1800}],img:'🍯',descAr:'عسل سدر ملكي من أشجار السدر في الوديان',descFr:'Miel de jujubier royal des vallées'},
+    {id:9,supplierId:2,nameAr:'تمر دقلة نور عضوي',nameFr:'Deglet Nour Bio',category:'dates',price:1800,bulkTiers:[{qty:5,price:1550},{qty:20,price:1200},{qty:50,price:900}],img:'🌴',descAr:'تمر دقلة نور عضوي معتمد من مزارع بسكرة',descFr:'Dattes Deglet Nour bio certifiées des fermes de Biskra'},
+    {id:10,supplierId:3,nameAr:'سجادة بربرية',nameFr:'Tapis Berbère',category:'handicrafts',price:8000,bulkTiers:[{qty:3,price:6500},{qty:6,price:5200},{qty:12,price:4000}],img:'🧶',descAr:'سجادة بربرية تقليدية منسوجة يدوياً من صوف الغنم',descFr:'Tapis berbère traditionnel tissé à la main en pure laine'},
+    {id:11,supplierId:1,nameAr:'هريسة تقليدية',nameFr:'Harissa Traditionnelle',category:'spices',price:300,bulkTiers:[{qty:12,price:240},{qty:24,price:190},{qty:48,price:140}],img:'🌶️',descAr:'هريسة تقليدية حارة 100% طبيعية',descFr:'Harissa traditionnelle piquante 100% naturelle'},
+    {id:12,supplierId:4,nameAr:'زيت الزيتون البكر',nameFr:'Huile d\'Olive Vierge',category:'oils',price:1600,bulkTiers:[{qty:6,price:1350},{qty:12,price:1150},{qty:24,price:900}],img:'🫒',descAr:'زيت زيتون بكر من زيتون جبال بجاية',descFr:'Huile d\'olive vierge des olives des montagnes de Béjaïa'},
+    {id:13,supplierId:3,nameAr:'شنطة جلدية تقليدية',nameFr:'Sac en Cuir Traditionnel',category:'handicrafts',price:4500,bulkTiers:[{qty:4,price:3800},{qty:8,price:3200},{qty:15,price:2500}],img:'👜',descAr:'شنطة جلدية تقليدية من جلد البقر المدبوغ طبيعياً',descFr:'Sac en cuir traditionnel en cuir de vache tanné naturellement'},
+    {id:14,supplierId:2,nameAr:'كسكس باللحم',nameFr:'Couscous à la Viande',category:'couscous',price:500,bulkTiers:[{qty:10,price:400},{qty:25,price:320},{qty:50,price:240}],img:'🥘',descAr:'كسكس تقليدي مع اللحم والخضار',descFr:'Couscous traditionnel avec viande et légumes'},
+    {id:15,supplierId:1,nameAr:'سميد تقليدي',nameFr:'Semoule Traditionnelle',category:'couscous',price:250,bulkTiers:[{qty:15,price:200},{qty:30,price:160},{qty:60,price:120}],img:'🌾',descAr:'سميد تقليدي من القمح الصلب الجزائري',descFr:'Semoule traditionnelle de blé dur algérien'},
+    {id:16,supplierId:4,nameAr:'صابون زيت الزيتون',nameFr:'Savon à l\'Huile d\'Olive',category:'traditional',price:250,bulkTiers:[{qty:10,price:200},{qty:25,price:160},{qty:50,price:120}],img:'🫧',descAr:'صابون طبيعي بزيت الزيتون والعسل',descFr:'Savon naturel à l\'huile d\'olive et au miel'},
+    {id:17,supplierId:2,nameAr:'زيت حبة البركة',nameFr:'Huile de Nigelle',category:'oils',price:1500,bulkTiers:[{qty:6,price:1250},{qty:12,price:1050},{qty:24,price:850}],img:'🌱',descAr:'زيت حبة البركة الطبيعي المعصور على البارد',descFr:'Huile de nigelle naturelle pressée à froid'},
+    {id:18,supplierId:3,nameAr:'مزهرية خزفية',nameFr:'Vase en Céramique',category:'handicrafts',price:3200,bulkTiers:[{qty:3,price:2700},{qty:8,price:2200},{qty:15,price:1700}],img:'🏺',descAr:'مزهرية خزفية مزخرفة بنقوش تقليدية',descFr:'Vase en céramique décoré de motifs traditionnels'},
+    {id:19,supplierId:5,nameAr:'آيفون 15 برو ماكس',nameFr:'iPhone 15 Pro Max 256Go',category:'smartphones',price:180000,bulkTiers:[{qty:3,price:165000},{qty:10,price:150000},{qty:20,price:135000}],img:'📱',descAr:'أحدث هاتف من آبل مع كاميرا احترافية وشريحة A17 Pro',descFr:'Le dernier iPhone avec appareil photo professionnel et puce A17 Pro'},
+    {id:20,supplierId:5,nameAr:'سامسونج جالاكسي S24 ألترا',nameFr:'Samsung Galaxy S24 Ultra',category:'smartphones',price:160000,bulkTiers:[{qty:3,price:148000},{qty:10,price:132000},{qty:20,price:118000}],img:'📱',descAr:'هاتف سامسونج الرائد مع قلم S Pen وشاشة مذهلة',descFr:'Le flagship Samsung avec S Pen et écran stupéfiant'},
+    {id:21,supplierId:5,nameAr:'آيربودز برو 2',nameFr:'AirPods Pro 2',category:'smartphones',price:35000,bulkTiers:[{qty:5,price:31000},{qty:15,price:27000},{qty:30,price:23000}],img:'🎧',descAr:'سماعات لاسلكية مع إلغاء الضوضاء النشط وجودة صوت فائقة',descFr:'Écouteurs sans fil avec réduction de bruit active et qualité sonore supérieure'},
+    {id:22,supplierId:5,nameAr:'شاحن سريع 65 واط',nameFr:'Chargeur Rapide 65W USB-C',category:'smartphones',price:5000,bulkTiers:[{qty:10,price:4200},{qty:25,price:3500},{qty:50,price:2800}],img:'🔌',descAr:'شاحن سريع بقدرة 65 واط مع منفذ USB-C لجميع الأجهزة',descFr:'Chargeur rapide 65W avec port USB-C pour tous vos appareils'},
+    {id:23,supplierId:5,nameAr:'جراب حماية آيفون 15',nameFr:'Coque iPhone 15 Pro Max',category:'smartphones',price:2500,bulkTiers:[{qty:10,price:2000},{qty:30,price:1600},{qty:60,price:1200}],img:'📱',descAr:'جراب حماية أنيق ومتين لهاتف آيفون 15 برو ماكس',descFr:'Coque de protection élégante et robuste pour iPhone 15 Pro Max'},
+    {id:24,supplierId:5,nameAr:'ساعة آبل واتش ألترا 2',nameFr:'Apple Watch Ultra 2',category:'smartphones',price:120000,bulkTiers:[{qty:3,price:110000},{qty:8,price:98000},{qty:15,price:85000}],img:'⌚',descAr:'ساعة رياضية متطورة مع شاشة كبيرة وعمر بطارية طويل',descFr:'Montre sportive avancée avec grand écran et longue autonomie'},
+    {id:25,supplierId:6,nameAr:'بدلة رجالية كلاسيكية',nameFr:'Costume Homme Élégant',category:'clothing-men',price:25000,bulkTiers:[{qty:5,price:21500},{qty:15,price:18000},{qty:30,price:14500}],img:'👔',descAr:'بدلة رجالية كلاسيكية بقماش فاخر مناسبة للمناسبات الرسمية',descFr:'Costume homme classique en tissu luxueux pour occasions formelles'},
+    {id:26,supplierId:6,nameAr:'قميص قطني رجالي',nameFr:'Chemise Homme en Coton',category:'clothing-men',price:5000,bulkTiers:[{qty:10,price:4200},{qty:25,price:3500},{qty:50,price:2800}],img:'👕',descAr:'قميص رجالي قطني 100% مريح وأنيق',descFr:'Chemise homme 100% coton confortable et élégante'},
+    {id:27,supplierId:6,nameAr:'بنطلون شينو',nameFr:'Pantalon Chino Homme',category:'clothing-men',price:6000,bulkTiers:[{qty:10,price:5000},{qty:25,price:4200},{qty:50,price:3400}],img:'👖',descAr:'بنطلون شينو رجالي بقصة عصرية ومريحة',descFr:'Pantalon chino homme coupe moderne et confortable'},
+    {id:28,supplierId:6,nameAr:'جاكيت جلدي رجالي',nameFr:'Blouson en Cuir Homme',category:'clothing-men',price:18000,bulkTiers:[{qty:5,price:15500},{qty:12,price:13000},{qty:25,price:10500}],img:'🧥',descAr:'جاكيت جلدي فاخر بتصميم عصري يناسب جميع الأوقات',descFr:'Blouson en cuir luxueux au design moderne pour toutes les occasions'},
+    {id:29,supplierId:6,nameAr:'فستان طويل أنيق',nameFr:'Robe Longue Élégante',category:'clothing-women',price:15000,bulkTiers:[{qty:5,price:12800},{qty:12,price:10800},{qty:25,price:8500}],img:'👗',descAr:'فستان طويل أنيق بتصميم عصري مناسب للسهرات والمناسبات',descFr:'Robe longue élégante au design moderne pour soirées et occasions'},
+    {id:30,supplierId:6,nameAr:'حقيبة يد نسائية فاخرة',nameFr:'Sac à Main Femme de Luxe',category:'clothing-women',price:12000,bulkTiers:[{qty:5,price:10200},{qty:12,price:8500},{qty:25,price:6800}],img:'👜',descAr:'حقيبة يد نسائية جلدية فاخرة بتصميم أنيق وعصري',descFr:'Sac à main femme en cuir luxueux au design élégant et moderne'},
+    {id:31,supplierId:6,nameAr:'طقم تنورة وسترة',nameFr:'Ensemble Jupe et Veste Femme',category:'clothing-women',price:22000,bulkTiers:[{qty:5,price:19000},{qty:12,price:16000},{qty:25,price:13000}],img:'👚',descAr:'طقم أنيق من التنورة والسترة مناسب للعمل والمناسبات الرسمية',descFr:'Ensemble élégant jupe et veste pour le travail et les occasions formelles'},
+    {id:32,supplierId:6,nameAr:'وشاح حريري نسائي',nameFr:'Écharpe en Soie Femme',category:'clothing-women',price:4000,bulkTiers:[{qty:10,price:3400},{qty:25,price:2800},{qty:50,price:2200}],img:'🧣',descAr:'وشاح حريري ناعم وفاخر بألوان عصرية',descFr:'Écharpe en soie douce et luxueuse aux couleurs modernes'},
+    {id:33,supplierId:6,nameAr:'بلوزة نسائية عصرية',nameFr:'Blouse Femme Moderne',category:'clothing-women',price:7000,bulkTiers:[{qty:10,price:5900},{qty:25,price:4900},{qty:50,price:3900}],img:'👚',descAr:'بلوزة نسائية عصرية بتصميم أنيق ومناسب لجميع الأوقات',descFr:'Blouse femme moderne au design élégant pour toutes les occasions'},
+    {id:34,supplierId:5,nameAr:'ساعة رجالية أتوماتيكية',nameFr:'Montre Homme Automatique',category:'watches',price:45000,bulkTiers:[{qty:3,price:39000},{qty:8,price:33000},{qty:15,price:26000}],img:'⌚',descAr:'ساعة رجالية أتوماتيكية سويسرية بهيكل فولاذي مقاوم للماء',descFr:'Montre homme automatique suisse avec boîtier en acier étanche'},
+    {id:35,supplierId:5,nameAr:'ساعة رجالية ذكية',nameFr:'Montre Homme Connectée',category:'watches',price:22000,bulkTiers:[{qty:5,price:19000},{qty:12,price:16000},{qty:25,price:13000}],img:'⌚',descAr:'ساعة ذكية رجالية مع مراقبة الصحة واللياقة البدنية',descFr:'Montre connectée homme avec suivi santé et fitness'},
+    {id:36,supplierId:6,nameAr:'ساعة نسائية فاخرة',nameFr:'Montre Femme Luxe',category:'watches',price:38000,bulkTiers:[{qty:3,price:33000},{qty:8,price:28000},{qty:15,price:22000}],img:'⌚',descAr:'ساعة نسائية فاخرة بتصميم أنيق وحزام جلدي إيطالي',descFr:'Montre femme luxe au design élégant avec bracelet cuir italien'},
+    {id:37,supplierId:6,nameAr:'ساعة نسائية كاجوال',nameFr:'Montre Femme Casual',category:'watches',price:12000,bulkTiers:[{qty:5,price:10000},{qty:12,price:8500},{qty:25,price:6500}],img:'⌚',descAr:'ساعة نسائية عصرية مناسبة للإطلالات اليومية',descFr:'Montre femme moderne pour looks quotidiens'},
+  ],
+  customers: [
+    {id:1,name:'أحمد كمال',email:'ahmed@email.com',password:'1234',role:'customer',referralCode:'AHMED10',referrals:0,points:150,phone:'0555 11 22 33',city:'الجزائر'},
+    {id:2,name:'فاطمة الزهراء',email:'fatima@email.com',password:'1234',role:'customer',referralCode:'FATIMA5',referrals:3,points:450,phone:'0666 22 33 44',city:'وهران'},
+    {id:3,name:'كريم بن علي',email:'karim@email.com',password:'1234',role:'customer',referralCode:'KARIM20',referrals:1,points:80,phone:'0777 33 44 55',city:'قسنطينة'},
+    {id:4,name:'سارة محي الدين',email:'sara@email.com',password:'1234',role:'customer',referralCode:'SARA15',referrals:5,points:720,phone:'0555 44 55 66',city:'عنابة'},
+  ],
+  orders: [],
+  referrals: []
+};
+
+// ========== STATE ==========
+let state = {
+  lang: 'ar',
+  currentUser: null,
+  cart: [],
+  currentPage: 'home',
+  loginRole: 'customer',
+  registerRole: 'customer',
+  products: [],
+  suppliers: [],
+  customers: [],
+  categories: [],
+  orders: [],
+  referrals: [],
+  filteredProducts: [],
+  editProductId: null,
+  hotDealsCategory: 'all',
+};
+
+// ========== I18N ==========
+const T = {
+  navHome:{ar:'الرئيسية',fr:'Accueil'},
+  navProducts:{ar:'المنتجات',fr:'Produits'},
+  navHow:{ar:'كيف يعمل',fr:'Comment ça marche'},
+heroTitle:{ar:'في لمتنا قوة ...',fr:'Dans notre groupe, la force...'},
+      heroTitle2:{ar:'و في جماعتنا وفر',fr:'et dans notre communauté, des économies'},
+      heroSub:{ar:'في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.',fr:'Dans notre groupe il y a la force, dans notre communauté des économies. Première plateforme d\'achat groupé en Algérie qui réunit les acheteurs pour les meilleurs prix.'},
+  browse:{ar:'تصفح المنتجات',fr:'Parcourir les produits'},
+  howWorks:{ar:'كيف يعمل',fr:'Comment ça marche'},
+  browseCat:{ar:'تصفح حسب الفئة',fr:'Parcourir par catégorie'},
+  discover:{ar:'اكتشف منتجات من أفضل الموردين - من التمور إلى التكنولوجيا',fr:'Découvrez des produits des meilleurs fournisseurs - des dattes à la technologie'},
+  featured:{ar:'منتجات مميزة',fr:'Produits en vedette'},
+  featuredSub:{ar:'منتجات تحظى بطلبات جماعية حالياً',fr:'Produits avec des commandes groupées en cours'},
+  why:{ar:'لماذا جمّع؟',fr:'Pourquoi Jamma3 ?'},
+  hotDeals:{ar:'أفضل العروض الجماعية',fr:'Meilleures offres groupées'},
+  hotDealsSub:{ar:'عروض شارفت على التخفيض - انضم الآن',fr:'Offres proches de la réduction - rejoignez maintenant'},
+  timeAgo:{ar:'منذ',fr:'il y a'},
+  unitMinute:{ar:'دقيقة',fr:'minute'},
+  unitMinutes:{ar:'دقائق',fr:'minutes'},
+  unitHour:{ar:'ساعة',fr:'heure'},
+  unitHours:{ar:'ساعات',fr:'heures'},
+  unitDay:{ar:'يوم',fr:'jour'},
+  unitDays:{ar:'أيام',fr:'jours'},
+  justNow:{ar:'الآن',fr:'à l\'instant'},
+  remaining:{ar:'متبقي',fr:'Reste'},
+  untilDiscount:{ar:'للتخفيض',fr:'pour la réduction'},
+  joined:{ar:'منضم',fr:'ont rejoint'},
+  allProducts:{ar:'جميع المنتجات',fr:'Tous les produits'},
+  allProductsSub:{ar:'اختر من بين منتجات متنوعة من أفضل الموردين',fr:'Choisissez parmi une variété de produits des meilleurs fournisseurs'},
+  search:{ar:'ابحث عن منتج...',fr:'Rechercher un produit...'},
+  allCats:{ar:'جميع الفئات',fr:'Toutes les catégories'},
+  allSupps:{ar:'جميع الموردين',fr:'Tous les fournisseurs'},
+  cart:{ar:'سلة المشتريات',fr:'Panier'},
+  emptyCart:{ar:'سلتك فارغة',fr:'Votre panier est vide'},
+  emptyCartSub:{ar:'تصفح المنتجات وأضف ما يعجبك',fr:'Parcourez les produits et ajoutez ce qui vous plaît'},
+  startShopping:{ar:'ابدأ التسوق',fr:'Commencer les achats'},
+  login:{ar:'تسجيل الدخول',fr:'Connexion'},
+  register:{ar:'إنشاء حساب جديد',fr:'Créer un compte'},
+  customer:{ar:'زبون',fr:'Client'},
+  supplier:{ar:'مورد',fr:'Fournisseur'},
+  email:{ar:'البريد الإلكتروني',fr:'Email'},
+  password:{ar:'كلمة المرور',fr:'Mot de passe'},
+  name:{ar:'الاسم الكامل',fr:'Nom complet'},
+  company:{ar:'اسم الشركة / المتجر',fr:'Nom de l\'entreprise / Magasin'},
+  phone:{ar:'رقم الهاتف',fr:'Numéro de téléphone'},
+  paymentSystem:{ar:'نظام الدفع',fr:'Système de paiement'},
+  monthlySub:{ar:'اشتراك شهري (5000 دج/شهر)',fr:'Abonnement mensuel (5000 DA/mois)'},
+  perOrder:{ar:'دفع حسب الطلب (10% من كل طلب)',fr:'Paiement par commande (10% par commande)'},
+  packaging:{ar:'خيار التغليف',fr:'Option d\'emballage'},
+  packagingSelf:{ar:'أقوم بالتغليف بنفسي',fr:'J\'emballe moi-même'},
+  packagingPlatform:{ar:'المنصة تتولى التغليف',fr:'La plateforme s\'occupe de l\'emballage'},
+  haveAccount:{ar:'لديك حساب بالفعل؟',fr:'Vous avez déjà un compte ?'},
+  noAccount:{ar:'ليس لديك حساب؟',fr:'Vous n\'avez pas de compte ?'},
+  createAccount:{ar:'إنشاء حساب',fr:'Créer un compte'},
+  logout:{ar:'تسجيل الخروج',fr:'Déconnexion'},
+  dashboard:{ar:'لوحة التحكم',fr:'Tableau de bord'},
+  overview:{ar:'نظرة عامة',fr:'Aperçu'},
+  myOrders:{ar:'طلباتي',fr:'Mes commandes'},
+  myProducts:{ar:'منتجاتي',fr:'Mes produits'},
+  orders:{ar:'الطلبات',fr:'Commandes'},
+  settings:{ar:'الإعدادات',fr:'Paramètres'},
+  profile:{ar:'ملفي الشخصي',fr:'Mon profil'},
+  referral:{ar:'نظام الإحالة',fr:'Système de parrainage'},
+  total:{ar:'المجموع',fr:'Total'},
+  checkout:{ar:'إتمام الشراء',fr:'Commander'},
+  addToCart:{ar:'أضف إلى السلة',fr:'Ajouter au panier'},
+  remove:{ar:'حذف',fr:'Supprimer'},
+  quantity:{ar:'الكمية',fr:'Quantité'},
+  unitPrice:{ar:'سعر الوحدة',fr:'Prix unitaire'},
+  bulkPrice:{ar:'سعر التخفيض',fr:'Prix groupé'},
+  minQty:{ar:'أقل كمية',fr:'Qté min'},
+  price:{ar:'السعر',fr:'Prix'},
+  productName:{ar:'اسم المنتج',fr:'Nom du produit'},
+  category:{ar:'الفئة',fr:'Catégorie'},
+  supplier_name:{ar:'المورد',fr:'Fournisseur'},
+  addProduct:{ar:'إضافة منتج',fr:'Ajouter un produit'},
+  editProduct:{ar:'تعديل المنتج',fr:'Modifier le produit'},
+  save:{ar:'حفظ',fr:'Enregistrer'},
+  cancel:{ar:'إلغاء',fr:'Annuler'},
+  delete:{ar:'حذف',fr:'Supprimer'},
+  confirm:{ar:'تأكيد',fr:'Confirmer'},
+  searchByName:{ar:'ابحث عن منتج...',fr:'Rechercher un produit...'},
+  refCode:{ar:'كود الإحالة',fr:'Code de parrainage'},
+  refCodeSub:{ar:'شارك الكود مع أصدقائك واحصل على مكافآت',fr:'Partagez ce code avec vos amis et gagnez des récompenses'},
+  refStats:{ar:'إحصائيات الإحالة',fr:'Statistiques de parrainage'},
+  refPeople:{ar:'الأشخاص المدعوون',fr:'Personnes parrainées'},
+  refPoints:{ar:'النقاط',fr:'Points'},
+  refDiscount:{ar:'الخصم المكتسب',fr:'Réduction gagnée'},
+  copyCode:{ar:'نسخ',fr:'Copier'},
+  copied:{ar:'تم النسخ!',fr:'Copié !'},
+  joinGroup:{ar:'انضم للطلب الجماعي',fr:'Rejoindre l\'achat groupé'},
+  howForBuyers:{ar:'للمشترين',fr:'Pour les acheteurs'},
+  howForSuppliers:{ar:'للموردين',fr:'Pour les fournisseurs'},
+  joinNow:{ar:'انضم إلينا الآن',fr:'Rejoignez-nous maintenant'},
+  ordersReceived:{ar:'الطلبات المستلمة',fr:'Commandes reçues'},
+  totalRevenue:{ar:'إجمالي الإيرادات',fr:'Revenu total'},
+  activeProducts:{ar:'المنتجات النشطة',fr:'Produits actifs'},
+  packagingOpt:{ar:'خيار التغليف',fr:'Option d\'emballage'},
+  youPackage:{ar:'أنت تتولى التغليف',fr:'Vous emballez vous-même'},
+  platformPackages:{ar:'المنصة تتولى التغليف',fr:'La plateforme emballe'},
+  paymentMethod:{ar:'طريقة الدفع',fr:'Méthode de paiement'},
+  monthly:{ar:'شهري',fr:'Mensuel'},
+  perOrderPay:{ar:'حسب الطلب',fr:'Par commande'},
+  saveChanges:{ar:'حفظ التغييرات',fr:'Enregistrer les modifications'},
+  totalBeforeDiscount:{ar:'المجموع قبل التخفيض',fr:'Total avant réduction'},
+  youSave:{ar:'وفرت',fr:'Vous économisez'},
+  orderPlaced:{ar:'تم تقديم الطلب بنجاح!',fr:'Commande passée avec succès !'},
+  orderPlacedSub:{ar:'سنقوم بتأكيد طلبك قريباً',fr:'Nous confirmerons votre commande bientôt'},
+  continueShopping:{ar:'مواصلة التسوق',fr:'Continuer les achats'},
+  productAdded:{ar:'تمت إضافة المنتج إلى السلة',fr:'Produit ajouté au panier'},
+  loginSuccess:{ar:'تم تسجيل الدخول بنجاح',fr:'Connexion réussie'},
+  registerSuccess:{ar:'تم إنشاء الحساب بنجاح',fr:'Compte créé avec succès'},
+  welcomeBack:{ar:'مرحباً بعودتك',fr:'Bon retour'},
+  welcome:{ar:'مرحباً',fr:'Bienvenue'},
+  profileUpdated:{ar:'تم تحديث الملف الشخصي',fr:'Profil mis à jour'},
+  orderHistory:{ar:'تاريخ الطلبات',fr:'Historique des commandes'},
+  noOrders:{ar:'لا توجد طلبات بعد',fr:'Aucune commande pour le moment'},
+  noOrdersSub:{ar:'قم بزيارة متجرنا واطلب الآن',fr:'Visitez notre boutique et commandez maintenant'},
+  noProducts:{ar:'لا توجد منتجات بعد',fr:'Aucun produit pour le moment'},
+  noProductsSub:{ar:'أضف منتجك الأول الآن',fr:'Ajoutez votre premier produit maintenant'},
+  addFirstProduct:{ar:'أضف منتجك الأول',fr:'Ajouter votre premier produit'},
+  confirmDeleteProduct:{ar:'هل أنت متأكد من حذف هذا المنتج؟',fr:'Êtes-vous sûr de vouloir supprimer ce produit ?'},
+  searchResults:{ar:'نتائج البحث',fr:'Résultats de recherche'},
+  noResults:{ar:'لا توجد نتائج',fr:'Aucun résultat'},
+  noResultsSub:{ar:'حاول بتغيير كلمات البحث',fr:'Essayez de modifier vos termes de recherche'},
+  packagingBy:{ar:'التغليف',fr:'Emballage'},
+  supplierInfo:{ar:'معلومات المورد',fr:'Informations fournisseur'},
+  referrerInfo:{ar:'تمت الإحالة بواسطة',fr:'Parrainé par'},
+  yourRefCode:{ar:'كود الإحالة الخاص بك',fr:'Votre code de parrainage'},
+  refDescription:{ar:'ادع أصدقائك باستخدام كود الإحالة الخاص بك. عندما يسجلون باستخدام الكود، ستحصل أنت وهم على نقاط مكافأة!',fr:'Invitez vos amis en utilisant votre code de parrainage. Quand ils s\'inscrivent avec ce code, vous et eux recevez des points bonus !'},
+};
+
+function t(key) {
+  const keys = key.split('.');
+  let val = T;
+  for (const k of keys) {
+    if (val && val[k]) val = val[k];
+    else return key;
+  }
+  if (typeof val === 'string') return val;
+  if (val && val[state.lang]) return val[state.lang];
+  return key;
+}
+
+// ========== INIT ==========
+function init() {
+  loadData();
+  renderCategories();
+  renderProducts();
+  renderBestDeals();
+  renderFeatured();
+  updateCartCount();
+  checkAuth();
+  handleRoute();
+  window.addEventListener('hashchange', handleRoute);
+  applyLang();
+}
+
+function loadData() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('jamma3_data'));
+    if (saved) {
+      state.products = saved.products || [...DEFAULT_DATA.products];
+      state.suppliers = saved.suppliers || [...DEFAULT_DATA.suppliers];
+      state.customers = saved.customers || [...DEFAULT_DATA.customers];
+      state.orders = saved.orders || [];
+      state.referrals = saved.referrals || [];
+    } else {
+      state.products = [...DEFAULT_DATA.products];
+      state.suppliers = [...DEFAULT_DATA.suppliers];
+      state.customers = [...DEFAULT_DATA.customers];
+      state.orders = [];
+      state.referrals = [];
+    }
+  } catch(e) {
+    state.products = [...DEFAULT_DATA.products];
+    state.suppliers = [...DEFAULT_DATA.suppliers];
+    state.customers = [...DEFAULT_DATA.customers];
+    state.orders = [];
+    state.referrals = [];
+  }
+  // Initialize groupQty and createdAt for products
+  const now = Date.now();
+  state.products.forEach((p, i) => {
+    if (!p.createdAt) {
+      p.createdAt = now - ((i * 2 + 1) * 3600000);
+    }
+    if (typeof p.groupQty === 'undefined') {
+      const firstTier = p.bulkTiers[0];
+      if (firstTier) {
+        p.groupQty = Math.max(1, firstTier.qty - Math.ceil(firstTier.qty * 0.35));
+      } else {
+        p.groupQty = 0;
+      }
+    }
+  });
+  state.categories = DEFAULT_DATA.categories;
+  state.filteredProducts = [...state.products];
+  const savedCart = localStorage.getItem('jamma3_cart');
+  if (savedCart) try { state.cart = JSON.parse(savedCart); } catch(e) { state.cart = []; }
+  const savedUser = localStorage.getItem('jamma3_user');
+  if (savedUser) try { state.currentUser = JSON.parse(savedUser); } catch(e) { state.currentUser = null; }
+  const savedLang = localStorage.getItem('jamma3_lang');
+  if (savedLang) state.lang = savedLang;
+}
+
+function saveData() {
+  localStorage.setItem('jamma3_data', JSON.stringify({
+    products: state.products,
+    suppliers: state.suppliers,
+    customers: state.customers,
+    orders: state.orders,
+    referrals: state.referrals
+  }));
+}
+
+function saveCart() {
+  localStorage.setItem('jamma3_cart', JSON.stringify(state.cart));
+}
+
+function saveUser() {
+  if (state.currentUser) localStorage.setItem('jamma3_user', JSON.stringify(state.currentUser));
+  else localStorage.removeItem('jamma3_user');
+}
+
+function saveLang() {
+  localStorage.setItem('jamma3_lang', state.lang);
+}
+
+// ========== ROUTING ==========
+function navigate(page) {
+  const hash = page ? '#' + page : '';
+  window.location.hash = hash;
+  return false;
+}
+
+function handleRoute() {
+  const hash = window.location.hash.slice(1) || 'home';
+  let page = hash;
+  let param = null;
+  if (hash.startsWith('product/')) {
+    page = 'product-detail';
+    param = hash.split('/')[1];
+  }
+  showPage(page, param);
+}
+
+function showPage(page, param) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) { el.classList.add('active'); state.currentPage = page; }
+  document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
+  const navLink = document.querySelector(`.header-nav a[data-page="${page}"]`);
+  if (navLink) navLink.classList.add('active');
+  const loginBtn = document.getElementById('loginBtn');
+  if (state.currentUser) {
+    loginBtn.textContent = state.currentUser.role === 'supplier' ? 'لوحة المورد' : 'حسابي';
+    loginBtn.onclick = () => navigate(state.currentUser.role === 'supplier' ? 'supplier-dashboard' : 'customer-dashboard');
+  } else {
+    loginBtn.textContent = t('login');
+    loginBtn.onclick = () => navigate('login');
+  }
+  if (page === 'home') { renderBestDeals(); renderFeatured(); renderCategories(); }
+  if (page === 'product-detail' && param) renderProductDetail(parseInt(param));
+  if (page === 'products') renderProducts();
+  if (page === 'cart') renderCart();
+  if (page === 'customer-dashboard') renderCustomerDash('overview');
+  if (page === 'supplier-dashboard') renderSupplierDash('overview');
+  document.getElementById('mobileMenuBtn') && (document.getElementById('mobileMenuBtn').onclick = toggleMobileMenu);
+}
+
+// ========== LANGUAGE ==========
+function toggleLang() {
+  state.lang = state.lang === 'ar' ? 'fr' : 'ar';
+  applyLang();
+  saveLang();
+}
+
+function applyLang() {
+  const html = document.documentElement;
+  if (state.lang === 'ar') {
+    html.setAttribute('lang', 'ar');
+    html.setAttribute('dir', 'rtl');
+    document.getElementById('langBtn').textContent = 'FR';
+  } else {
+    html.setAttribute('lang', 'fr');
+    html.setAttribute('dir', 'ltr');
+    document.getElementById('langBtn').textContent = 'عربي';
+  }
+  updateUILang();
+}
+
+function updateUILang() {
+  const loginBtn = document.getElementById('loginBtn');
+  if (state.currentUser) {
+    loginBtn.textContent = state.currentUser.role === 'supplier' ? 'لوحة المورد' : 'حسابي';
+  } else {
+    loginBtn.textContent = t('login');
+  }
+  if (state.currentPage === 'home') { renderBestDeals(); renderFeatured(); renderCategories(); }
+  if (state.currentPage === 'products') renderProducts();
+  if (state.currentPage === 'cart') renderCart();
+  if (state.currentPage === 'product-detail') {
+    const hash = window.location.hash.slice(1);
+    if (hash.startsWith('product/')) renderProductDetail(parseInt(hash.split('/')[1]));
+  }
+  updateNavLinks();
+  updateHeroSection();
+  updateHowItWorks();
+  if (state.currentUser) {
+    if (state.currentUser.role === 'customer') renderCustomerDash(document.querySelector('.dashboard-nav a.active')?.dataset?.dash || 'overview');
+    else renderSupplierDash(document.querySelector('#suppDashSidebar .dashboard-nav a.active')?.dataset?.supp || 'overview');
+  }
+}
+
+function updateNavLinks() {
+  const links = document.querySelectorAll('.header-nav a');
+  const pages = ['home','products','how-it-works'];
+  const keys = ['navHome','navProducts','navHow'];
+  links.forEach((a,i) => { if (pages[i]) a.textContent = t(keys[i]); });
+}
+
+function updateHeroSection() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  hero.querySelector('h1').innerHTML = `${t('heroTitle')} <span>${t('heroTitle2')}</span>`;
+  hero.querySelector('p').textContent = t('heroSub');
+  const actions = hero.querySelector('.hero-actions');
+  if (actions) {
+    actions.querySelectorAll('a')[0].innerHTML = t('browse');
+    actions.querySelectorAll('a')[1].innerHTML = t('howWorks');
+  }
+}
+
+function updateHowItWorks() {
+  const section = document.querySelector('#page-how-it-works');
+  if (!section) return;
+  const h2 = section.querySelector('.section-header h2');
+  const p = section.querySelector('.section-header p');
+  if (h2) h2.textContent = state.lang === 'ar' ? 'كيف يعمل جمّع؟' : 'Comment fonctionne Jamma3 ?';
+  if (p) p.textContent = state.lang === 'ar' ? 'منصة الشراء الجماعي الأولى في الجزائر' : 'Première plateforme d\'achat groupé en Algérie';
+  const cards = section.querySelectorAll('.card');
+  if (cards.length >= 2) {
+    cards[0].querySelector('h3').textContent = t('howForBuyers');
+    cards[1].querySelector('h3').textContent = t('howForSuppliers');
+  }
+}
+
+// ========== MOBILE MENU ==========
+function toggleMobileMenu() {
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('open');
+}
+
+// ========== CATEGORIES ==========
+function renderCategories() {
+  const grid = document.getElementById('categoriesGrid');
+  if (!grid) return;
+  grid.innerHTML = state.categories.map(c => `
+    <div class="card cat-card" onclick="setCategory('${c.id}');navigate('products')">
+      <div class="cat-icon">${c.icon}</div>
+      <div class="cat-name">${state.lang === 'ar' ? c.nameAr : c.nameFr}</div>
+    </div>
+  `).join('');
+}
+
+function setCategory(id) {
+  document.getElementById('catFilter') && (document.getElementById('catFilter').value = id);
+}
+
+// ========== PRODUCTS ==========
+function renderProducts() {
+  const grid = document.getElementById('allProducts');
+  if (!grid) return;
+  const search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const cat = document.getElementById('catFilter')?.value || '';
+  const supp = document.getElementById('supplierFilter')?.value || '';
+  state.filteredProducts = state.products.filter(p => {
+    const nameMatch = p.nameAr.toLowerCase().includes(search) || p.nameFr.toLowerCase().includes(search);
+    const catMatch = !cat || p.category === cat;
+    const suppMatch = !supp || p.supplierId === parseInt(supp);
+    return nameMatch && catMatch && suppMatch;
+  });
+  if (state.filteredProducts.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>${t('noResults')}</h3><p>${t('noResultsSub')}</p></div>`;
+    return;
+  }
+  grid.innerHTML = state.filteredProducts.map(p => productCardHTML(p)).join('');
+  // Populate filter dropdowns
+  const catFilter = document.getElementById('catFilter');
+  if (catFilter && catFilter.options.length <= 1) {
+    catFilter.innerHTML = `<option value="">${t('allCats')}</option>` + state.categories.map(c => `<option value="${c.id}">${state.lang === 'ar' ? c.nameAr : c.nameFr}</option>`).join('');
+  }
+  const suppFilter = document.getElementById('supplierFilter');
+  if (suppFilter && suppFilter.options.length <= 1) {
+    suppFilter.innerHTML = `<option value="">${t('allSupps')}</option>` + state.suppliers.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+  }
+}
+
+function filterProducts() {
+  renderProducts();
+}
+
+function productCardHTML(p) {
+  const supp = state.suppliers.find(s => s.id === p.supplierId);
+  const minBulk = p.bulkTiers.length > 0 ? p.bulkTiers[0] : null;
+  return `
+    <div class="card product-card" onclick="navigate('product/${p.id}')">
+      <div class="product-img" style="background:linear-gradient(135deg,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}15,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}08)">
+        ${p.img}
+        ${minBulk ? `<span class="badge badge-amber product-badge">-${Math.round((1 - minBulk.price / p.price) * 100)}%</span>` : ''}
+      </div>
+      <div class="product-body">
+        <div class="product-name">${state.lang === 'ar' ? p.nameAr : p.nameFr}</div>
+        <div class="product-supplier">${supp ? supp.name : ''}</div>
+        <div class="product-price">
+          <span class="product-price-current">${minBulk ? minBulk.price.toLocaleString() : p.price.toLocaleString()} دج</span>
+          <span class="product-price-original">${p.price.toLocaleString()} دج</span>
+        </div>
+        ${minBulk ? `<div class="product-bulk">${t('minQty')}: ${minBulk.qty} | ${t('bulkPrice')}: ${minBulk.price.toLocaleString()} دج</div>` : ''}
+        <div class="product-meta">
+          <span class="tag">${state.lang === 'ar' ? state.categories.find(c=>c.id===p.category)?.nameAr || p.category : state.categories.find(c=>c.id===p.category)?.nameFr || p.category}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFeatured() {
+  const grid = document.getElementById('featuredProducts');
+  if (!grid) return;
+  const featured = [...state.products].sort(() => Math.random() - 0.5).slice(0, 8);
+  grid.innerHTML = featured.map(p => productCardHTML(p)).join('');
+}
+
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  const hrs = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (mins < 1) return t('justNow');
+  if (hrs < 1) return `${t('timeAgo')} ${mins} ${mins === 1 ? t('unitMinute') : t('unitMinutes')}`;
+  if (days < 1) return `${t('timeAgo')} ${hrs} ${hrs === 1 ? t('unitHour') : t('unitHours')}`;
+  return `${t('timeAgo')} ${days} ${days === 1 ? t('unitDay') : t('unitDays')}`;
+}
+
+function renderBestDeals() {
+  const grid = document.getElementById('hotDealsGrid');
+  const title = document.getElementById('hotDealsTitle');
+  const sub = document.getElementById('hotDealsSub');
+  const pillsContainer = document.getElementById('hotDealsCatPills');
+  if (!grid) return;
+  if (title) title.textContent = t('hotDeals');
+  if (sub) sub.textContent = t('hotDealsSub');
+  const allDeals = state.products
+    .filter(p => ['smartphones','clothing-men','clothing-women','watches'].includes(p.category))
+    .map(p => {
+      const nextTier = p.bulkTiers.find(t => t.qty > p.groupQty);
+      const currentTier = [...p.bulkTiers].reverse().find(t => t.qty <= p.groupQty);
+      const progress = nextTier ? (p.groupQty / nextTier.qty) : 1;
+      const remaining = nextTier ? nextTier.qty - p.groupQty : 0;
+      return { ...p, progress, remaining, nextTier, currentTier };
+    })
+    .filter(p => p.remaining > 0 && p.progress > 0.1)
+    .sort((a, b) => {
+      const discountA = a.nextTier ? Math.round((1 - a.nextTier.price / a.price) * 100) : 0;
+      const discountB = b.nextTier ? Math.round((1 - b.nextTier.price / b.price) * 100) : 0;
+      return discountB - discountA || b.progress - a.progress;
+    });
+  const grouped = {};
+  const catOrder = [];
+  allDeals.forEach(d => {
+    if (!grouped[d.category]) {
+      grouped[d.category] = [];
+      catOrder.push(d.category);
+    }
+    grouped[d.category].push(d);
+  });
+  const selectedCat = state.hotDealsCategory || 'all';
+  if (pillsContainer) {
+    let html = `<span class="cat-pill${selectedCat === 'all' ? ' active' : ''}" onclick="state.hotDealsCategory='all';renderBestDeals()">${t('allCats')}</span>`;
+    catOrder.forEach(catId => {
+      const cat = state.categories.find(c => c.id === catId);
+      if (!cat) return;
+      const name = state.lang === 'ar' ? cat.nameAr : cat.nameFr;
+      html += `<span class="cat-pill${selectedCat === catId ? ' active' : ''}" onclick="state.hotDealsCategory='${catId}';renderBestDeals()">${cat.icon} ${name}</span>`;
+    });
+    pillsContainer.innerHTML = html;
+  }
+  const filtered = selectedCat === 'all' ? allDeals : (grouped[selectedCat] || []);
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><h3>${t('noResults')}</h3></div>`;
+    return;
+  }
+  function cardHTML(p) {
+    const supp = state.suppliers.find(s => s.id === p.supplierId);
+    const pct = Math.round(p.progress * 100);
+    return `
+    <div class="card product-card" onclick="navigate('product/${p.id}')">
+      <div class="product-img" style="background:linear-gradient(135deg,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}15,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}08)">
+        ${p.img}
+        <span class="badge badge-time" style="position:absolute;top:12px;left:${state.lang === 'ar' ? 'auto' : '12px'};right:${state.lang === 'ar' ? '12px' : 'auto'}">🕐 ${timeAgo(p.createdAt)}</span>
+        <span class="badge badge-red product-badge" style="bottom:12px;top:auto;left:${state.lang === 'ar' ? 'auto' : '12px'};right:${state.lang === 'ar' ? '12px' : 'auto'}">${pct}%</span>
+      </div>
+      <div class="product-body">
+        <div class="product-name">${state.lang === 'ar' ? p.nameAr : p.nameFr}</div>
+        <div class="product-supplier">${supp ? supp.name : ''}</div>
+        <div class="product-price">
+          <span class="product-price-current">${p.nextTier ? p.nextTier.price.toLocaleString() : p.price.toLocaleString()} دج</span>
+          <span class="product-price-original">${p.price.toLocaleString()} دج</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px">
+          <span>${p.groupQty} ${t('joined')}</span>
+          <span>${t('remaining')} ${p.remaining} ${t('untilDiscount')}</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+    </div>`;
+  }
+  if (selectedCat === 'all') {
+    grid.innerHTML = catOrder.map(catId => {
+      const arr = grouped[catId];
+      if (!arr || arr.length === 0) return '';
+      const cat = state.categories.find(c => c.id === catId);
+      const catName = cat ? (state.lang === 'ar' ? cat.nameAr : cat.nameFr) : catId;
+      const catIcon = cat ? cat.icon : '';
+      return `<div class="hot-deal-category"><h3 class="hot-deal-cat-title">${catIcon} ${catName}</h3><div class="product-grid">${arr.slice(0, 3).map(cardHTML).join('')}</div></div>`;
+    }).join('');
+  } else {
+    grid.innerHTML = `<div class="product-grid">${filtered.slice(0, 6).map(cardHTML).join('')}</div>`;
+  }
+}
+
+// ========== PRODUCT DETAIL ==========
+function renderProductDetail(id) {
+  const p = state.products.find(pr => pr.id === id);
+  if (!p) { document.getElementById('productDetailContainer').innerHTML = '<div class="empty-state"><h3>المنتج غير موجود</h3></div>'; return; }
+  const supp = state.suppliers.find(s => s.id === p.supplierId);
+  const container = document.getElementById('productDetailContainer');
+  container.innerHTML = `
+    <div style="padding-top:24px">
+      <a href="#products" onclick="return navigate('products')" style="color:var(--muted);font-size:14px">← ${t('navProducts')}</a>
+    </div>
+    <div class="product-detail">
+      <div class="product-detail-img" style="background:linear-gradient(135deg,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}12,${p.category === 'dates' ? '#1E3A5F' : p.category === 'oils' ? '#2E4F7A' : p.category === 'honey' ? '#D4785C' : p.category === 'spices' ? '#D4785C' : p.category === 'couscous' ? '#D4A84A' : p.category === 'handicrafts' ? '#1E3A5F' : p.category === 'smartphones' ? '#2563EB' : p.category === 'clothing-men' ? '#1E405F' : p.category === 'clothing-women' ? '#C4586C' : p.category === 'watches' ? '#9B59B6' : '#6B7280'}06)">${p.img}</div>
+      <div class="product-info">
+        <h1>${state.lang === 'ar' ? p.nameAr : p.nameFr}</h1>
+        <div class="supplier-name">${supp ? supp.name : ''} • ${state.lang === 'ar' ? state.categories.find(c=>c.id===p.category)?.nameAr || p.category : state.categories.find(c=>c.id===p.category)?.nameFr || p.category}</div>
+        <p style="color:var(--text-secondary);margin:16px 0;font-size:14px">${state.lang === 'ar' ? p.descAr : p.descFr}</p>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:14px;color:var(--text-secondary)">${t('packagingBy')}:</span>
+          <span class="badge ${supp?.packaging === 'platform' ? 'badge-blue' : 'badge-green'}">
+            ${supp?.packaging === 'platform' ? t('platformPackages') : t('youPackage')}
+          </span>
+        </div>
+        <h3 style="font-size:16px;font-weight:600;margin:20px 0 12px">${t('joinGroup')}</h3>
+        <table class="pricing-table">
+          <tr><th>${t('quantity')}</th><th>${t('unitPrice')}</th><th>${t('total')}</th><th>${t('youSave')}</th></tr>
+          <tr><td>1</td><td>${p.price.toLocaleString()} دج</td><td>${p.price.toLocaleString()} دج</td><td>-</td></tr>
+          ${p.bulkTiers.map(tier => `
+            <tr class="${tier === p.bulkTiers[p.bulkTiers.length-1] ? 'highlight' : ''}">
+              <td>${t('minQty')} ${tier.qty}</td>
+              <td>${tier.price.toLocaleString()} دج</td>
+              <td>${(tier.price * tier.qty).toLocaleString()} دج</td>
+              <td>${Math.round((1 - tier.price/p.price)*100)}%</td>
+            </tr>
+          `).join('')}
+        </table>
+        <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:8px">
+            <button class="qty-btn" onclick="changeDetailQty(-1)">-</button>
+            <span id="detailQty" style="font-size:18px;font-weight:700;min-width:30px;text-align:center">1</span>
+            <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
+          </div>
+          <button class="btn btn-primary btn-lg" onclick="addToCart(${p.id})">${t('addToCart')} - <span id="detailAddPrice">${p.price.toLocaleString()} دج</span></button>
+        </div>
+        ${supp ? `
+        <div style="margin-top:24px;padding:16px;background:var(--bg);border-radius:var(--radius)">
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:8px">${t('supplierInfo')}</h4>
+          <div style="font-size:14px;color:var(--text-secondary)">
+            <div>${supp.img} ${supp.name}</div>
+            <div>📞 ${supp.phone}</div>
+            <div>📍 ${supp.city}</div>
+          </div>
+        </div>` : ''}
+      </div>
+    </div>
+  `;
+  window._detailQty = 1;
+}
+
+let detailQtyVal = 1;
+function changeDetailQty(delta) {
+  detailQtyVal = Math.max(1, detailQtyVal + delta);
+  document.getElementById('detailQty').textContent = detailQtyVal;
+  const hash = window.location.hash.slice(1);
+  if (hash.startsWith('product/')) {
+    const id = parseInt(hash.split('/')[1]);
+    const p = state.products.find(pr => pr.id === id);
+    if (p) {
+      let price = p.price;
+      for (const tier of p.bulkTiers) {
+        if (detailQtyVal >= tier.qty) price = tier.price;
+      }
+      document.getElementById('detailAddPrice').textContent = (price * detailQtyVal).toLocaleString() + ' دج';
+    }
+  }
+}
+
+function addToCart(productId) {
+  const p = state.products.find(pr => pr.id === productId);
+  if (!p) return;
+  let qty = detailQtyVal || 1;
+  let price = p.price;
+  for (const tier of p.bulkTiers) {
+    if (qty >= tier.qty) price = tier.price;
+  }
+  const existing = state.cart.find(item => item.productId === productId);
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    state.cart.push({ productId, qty, addedPrice: price });
+  }
+  p.groupQty = (p.groupQty || 0) + qty;
+  saveData();
+  saveCart();
+  updateCartCount();
+  renderBestDeals();
+  showToast(t('productAdded'), 'success');
+}
+
+function updateCartCount() {
+  const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+}
+
+// ========== CART ==========
+function renderCart() {
+  const itemsEl = document.getElementById('cartItems');
+  const summaryEl = document.getElementById('cartSummary');
+  if (!itemsEl || !summaryEl) return;
+  if (state.cart.length === 0) {
+    itemsEl.innerHTML = `<div class="empty-state"><div class="empty-icon">🛒</div><h3>${t('emptyCart')}</h3><p>${t('emptyCartSub')}</p><button class="btn btn-primary" onclick="navigate('products')">${t('startShopping')}</button></div>`;
+    summaryEl.innerHTML = '';
+    return;
+  }
+  itemsEl.innerHTML = state.cart.map((item, idx) => {
+    const p = state.products.find(pr => pr.id === item.productId);
+    if (!p) return '';
+    return `
+      <div class="cart-item">
+        <div class="cart-item-img">${p.img}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${state.lang === 'ar' ? p.nameAr : p.nameFr}</div>
+          <div class="cart-item-price">${item.addedPrice.toLocaleString()} دج / للوحدة</div>
+        </div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="cartQtyChange(${idx}, -1)">-</button>
+          <span style="font-weight:700;min-width:24px;text-align:center">${item.qty}</span>
+          <button class="qty-btn" onclick="cartQtyChange(${idx}, 1)">+</button>
+        </div>
+        <div style="font-weight:700;min-width:80px;text-align:center">${(item.addedPrice * item.qty).toLocaleString()} دج</div>
+        <button class="btn btn-ghost btn-sm" onclick="cartRemove(${idx})" style="color:var(--danger)">✕</button>
+      </div>
+    `;
+  }).join('');
+  const total = state.cart.reduce((sum, item) => sum + item.addedPrice * item.qty, 0);
+  const originalTotal = state.cart.reduce((sum, item) => {
+    const p = state.products.find(pr => pr.id === item.productId);
+    return sum + (p ? p.price * item.qty : 0);
+  }, 0);
+  const savings = originalTotal - total;
+  summaryEl.innerHTML = `
+    <h3>${t('total')}</h3>
+    <div class="summary-row"><span>${t('totalBeforeDiscount')}</span><span>${originalTotal.toLocaleString()} دج</span></div>
+    <div class="summary-row" style="color:var(--success)"><span>${t('youSave')}</span><span>-${savings.toLocaleString()} دج</span></div>
+    <div class="summary-row total"><span>${t('total')}</span><span>${total.toLocaleString()} دج</span></div>
+    <button class="btn btn-secondary btn-block btn-lg mt-16" onclick="goToCheckout()">${t('checkout')}</button>
+    <button class="btn btn-ghost btn-block mt-8" onclick="cartClear()" style="color:var(--danger)">🗑 ${t('remove')} الكل</button>
+  `;
+}
+
+function cartQtyChange(idx, delta) {
+  if (state.cart[idx]) {
+    state.cart[idx].qty = Math.max(1, state.cart[idx].qty + delta);
+    saveCart();
+    renderCart();
+    updateCartCount();
+  }
+}
+
+function cartRemove(idx) {
+  state.cart.splice(idx, 1);
+  saveCart();
+  renderCart();
+  updateCartCount();
+}
+
+function cartClear() {
+  state.cart = [];
+  saveCart();
+  renderCart();
+  updateCartCount();
+}
+
+// ========== CHECKOUT ==========
+function goToCheckout() {
+  if (state.cart.length === 0) return;
+  // For demo, just show success
+  showToast(t('orderPlaced'), 'success');
+  const total = state.cart.reduce((sum, item) => sum + item.addedPrice * item.qty, 0);
+  // Create order
+  const order = {
+    id: Date.now(),
+    items: [...state.cart],
+    total,
+    date: new Date().toISOString(),
+    customerId: state.currentUser?.id || null,
+    customerName: state.currentUser?.name || 'زائر',
+    status: 'قيد التأكيد'
+  };
+  state.orders.push(order);
+  saveData();
+  state.cart = [];
+  saveCart();
+  renderCart();
+  updateCartCount();
+  // Simple order confirmation modal
+  showModal(`
+    <div class="text-center">
+      <div style="font-size:64px;margin-bottom:16px">🎉</div>
+      <h3>${t('orderPlaced')}</h3>
+      <p style="color:var(--text-secondary);margin:12px 0">${t('orderPlacedSub')}</p>
+      <p style="font-size:24px;font-weight:700;color:var(--green);margin:16px 0">${total.toLocaleString()} دج</p>
+      <button class="btn btn-primary" onclick="closeModal();navigate('home')">${t('continueShopping')}</button>
+    </div>
+  `);
+}
+
+// ========== MODAL ==========
+function showModal(content) {
+  const existing = document.querySelector('.modal-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay open';
+  overlay.innerHTML = `<div class="modal">${content}</div>`;
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+function closeModal() {
+  const overlay = document.querySelector('.modal-overlay');
+  if (overlay) overlay.remove();
+}
+
+// ========== TOAST ==========
+function showToast(msg, type) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type || 'info'}`;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// ========== AUTH ==========
+function setLoginRole(role) {
+  state.loginRole = role;
+  document.querySelectorAll('#page-login .auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#page-login .auth-tab')[role === 'customer' ? 0 : 1].classList.add('active');
+}
+
+function setRegisterRole(role) {
+  state.registerRole = role;
+  document.querySelectorAll('#page-register .auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#page-register .auth-tab')[role === 'customer' ? 0 : 1].classList.add('active');
+  document.getElementById('regReferralField').style.display = role === 'customer' ? 'block' : 'none';
+  document.getElementById('regSupplierFields').classList.toggle('hidden', role !== 'supplier');
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const role = state.loginRole;
+  let users = role === 'customer' ? state.customers : state.suppliers;
+  const user = users.find(u => u.email === email && u.password === password);
+  if (!user) { showToast('البريد الإلكتروني أو كلمة المرور غير صحيحة', 'error'); return false; }
+  state.currentUser = { ...user, role };
+  saveUser();
+  showToast(t('loginSuccess'), 'success');
+  navigate(role === 'supplier' ? 'supplier-dashboard' : 'customer-dashboard');
+  return false;
+}
+
+function handleRegister(e) {
+  e.preventDefault();
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const role = state.registerRole;
+  if (role === 'customer') {
+    const refCode = document.getElementById('regReferral').value.trim().toUpperCase();
+    const existing = state.customers.find(c => c.email === email);
+    if (existing) { showToast('البريد الإلكتروني موجود مسبقاً', 'error'); return false; }
+    const newId = Math.max(...state.customers.map(c => c.id), 0) + 1;
+    const genCode = name.substring(0, 3).toUpperCase() + newId;
+    const newCustomer = {
+      id: newId, name, email, password, role: 'customer',
+      referralCode: genCode, referrals: 0, points: 50,
+      phone: '', city: ''
+    };
+    state.customers.push(newCustomer);
+    // Handle referral
+    if (refCode) {
+      const referrer = state.customers.find(c => c.referralCode === refCode);
+      if (referrer) {
+        referrer.referrals = (referrer.referrals || 0) + 1;
+        referrer.points = (referrer.points || 0) + 100;
+        newCustomer.points = 100; // bonus for new user
+        state.referrals.push({ from: newCustomer.id, to: referrer.id, date: new Date().toISOString() });
+        showToast(`تمت الإحالة بنجاح بواسطة ${referrer.name}!`, 'success');
+      }
+    }
+    saveData();
+    state.currentUser = { ...newCustomer, role: 'customer' };
+    saveUser();
+    showToast(t('registerSuccess'), 'success');
+    navigate('customer-dashboard');
+  } else {
+    const company = document.getElementById('regCompany').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const payment = document.getElementById('regPayment').value;
+    const packaging = document.getElementById('regPackaging').value;
+    const existing = state.suppliers.find(s => s.email === email);
+    if (existing) { showToast('البريد الإلكتروني موجود مسبقاً', 'error'); return false; }
+    const newId = Math.max(...state.suppliers.map(s => s.id), 0) + 1;
+    const newSupplier = {
+      id: newId, name, email, phone, company, city: '',
+      payment, packaging, password, role: 'supplier', img: '🏪'
+    };
+    state.suppliers.push(newSupplier);
+    saveData();
+    state.currentUser = { ...newSupplier, role: 'supplier' };
+    saveUser();
+    showToast(t('registerSuccess'), 'success');
+    navigate('supplier-dashboard');
+  }
+  return false;
+}
+
+function handleLogout() {
+  state.currentUser = null;
+  localStorage.removeItem('jamma3_user');
+  showToast('تم تسجيل الخروج', 'info');
+  navigate('home');
+  return false;
+}
+
+function checkAuth() {
+  if (state.currentUser) {
+    const loginBtn = document.getElementById('loginBtn');
+    loginBtn.textContent = state.currentUser.role === 'supplier' ? 'لوحة المورد' : 'حسابي';
+    loginBtn.onclick = () => navigate(state.currentUser.role === 'supplier' ? 'supplier-dashboard' : 'customer-dashboard');
+  }
+}
+
+// ========== CUSTOMER DASHBOARD ==========
+function renderCustomerDash(section) {
+  if (!state.currentUser || state.currentUser.role !== 'customer') { navigate('login'); return; }
+  document.querySelectorAll('#dashSidebar .dashboard-nav a').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector(`#dashSidebar .dashboard-nav a[data-dash="${section}"]`);
+  if (activeLink) activeLink.classList.add('active');
+  const userInfo = document.getElementById('dashUserInfo');
+  const u = state.currentUser;
+  userInfo.innerHTML = `<div class="user-avatar">${u.name.charAt(0)}</div><div style="font-weight:600;font-size:14px">${u.name}</div><div style="font-size:12px;color:var(--muted)">${t('customer')}</div>`;
+  const content = document.getElementById('dashContent');
+  if (section === 'overview') {
+    const orderCount = state.orders.filter(o => o.customerId === u.id).length;
+    const totalSpent = state.orders.filter(o => o.customerId === u.id).reduce((s, o) => s + o.total, 0);
+    content.innerHTML = `
+      <h2>${t('overview')}</h2>
+      <div class="grid-3" style="margin-bottom:24px">
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--green)">${orderCount}</div><div style="font-size:14px;color:var(--muted)">${t('myOrders')}</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--amber)">${totalSpent.toLocaleString()} دج</div><div style="font-size:14px;color:var(--muted)">${t('total')}</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--green)">${u.points || 0}</div><div style="font-size:14px;color:var(--muted)">${t('refPoints')}</div></div>
+      </div>
+      <div class="ref-card">
+        <h3>${t('yourRefCode')}</h3>
+        <p style="font-size:14px;opacity:0.9">${t('refDescription')}</p>
+        <div class="ref-code">
+          <span>${u.referralCode}</span>
+          <button onclick="copyRefCode('${u.referralCode}')">${t('copyCode')}</button>
+        </div>
+        <div class="ref-stats">
+          <div class="ref-stat"><div class="ref-stat-value">${u.referrals || 0}</div><div class="ref-stat-label">${t('refPeople')}</div></div>
+          <div class="ref-stat"><div class="ref-stat-value">${u.points || 0}</div><div class="ref-stat-label">${t('refPoints')}</div></div>
+          <div class="ref-stat"><div class="ref-stat-value">${((u.points || 0) * 0.5).toFixed(0)}</div><div class="ref-stat-label">${t('refDiscount')} (دج)</div></div>
+        </div>
+      </div>
+      <h3 style="font-size:16px;font-weight:600;margin-bottom:12px">${t('orderHistory')}</h3>
+      ${renderOrderHistory(u.id)}
+    `;
+  } else if (section === 'orders') {
+    content.innerHTML = `<h2>${t('myOrders')}</h2>${renderOrderHistory(u.id)}`;
+  } else if (section === 'referral') {
+    content.innerHTML = `
+      <h2>${t('referral')}</h2>
+      <div class="ref-card">
+        <h3>${t('yourRefCode')}</h3>
+        <p style="font-size:14px;opacity:0.9">${t('refDescription')}</p>
+        <div class="ref-code">
+          <span>${u.referralCode}</span>
+          <button onclick="copyRefCode('${u.referralCode}')">${t('copyCode')}</button>
+        </div>
+        <div class="ref-stats">
+          <div class="ref-stat"><div class="ref-stat-value">${u.referrals || 0}</div><div class="ref-stat-label">${t('refPeople')}</div></div>
+          <div class="ref-stat"><div class="ref-stat-value">${u.points || 0}</div><div class="ref-stat-label">${t('refPoints')}</div></div>
+          <div class="ref-stat"><div class="ref-stat-value">${((u.points || 0) * 0.5).toFixed(0)}</div><div class="ref-stat-label">${t('refDiscount')} (دج)</div></div>
+        </div>
+      </div>
+      <h3 style="font-weight:600;margin:16px 0">${t('referrerInfo')}</h3>
+      ${state.referrals.filter(r => r.from === u.id).length > 0 ? state.referrals.filter(r => r.from === u.id).map(r => {
+        const ref = state.customers.find(c => c.id === r.to);
+        return ref ? `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:14px">✅ ${ref.name} - ${new Date(r.date).toLocaleDateString('ar-DZ')}</div>` : '';
+      }).join('') : `<p style="color:var(--muted);font-size:14px">لم تقم بدعوة أحد بعد</p>`}
+    `;
+  } else if (section === 'profile') {
+    content.innerHTML = `
+      <h2>${t('profile')}</h2>
+      <form onsubmit="return updateProfile(event)" style="max-width:500px">
+        <div class="form-group"><label>${t('name')}</label><input type="text" id="profName" value="${u.name}"></div>
+        <div class="form-group"><label>${t('email')}</label><input type="email" id="profEmail" value="${u.email}"></div>
+        <div class="form-group"><label>${t('phone')}</label><input type="text" id="profPhone" value="${u.phone || ''}"></div>
+        <div class="form-group"><label>المدينة</label><input type="text" id="profCity" value="${u.city || ''}"></div>
+        <button type="submit" class="btn btn-primary">${t('saveChanges')}</button>
+      </form>
+    `;
+  }
+}
+
+function renderOrderHistory(customerId) {
+  const orders = state.orders.filter(o => o.customerId === customerId);
+  if (orders.length === 0) {
+    return `<div class="empty-state"><div class="empty-icon">📦</div><h3>${t('noOrders')}</h3><p>${t('noOrdersSub')}</p><button class="btn btn-primary" onclick="navigate('products')">${t('startShopping')}</button></div>`;
+  }
+  return orders.map(o => `
+    <div class="card" style="padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+        <span style="font-weight:600">#${o.id}</span>
+        <span class="badge badge-green">${o.status}</span>
+      </div>
+      <div style="font-size:14px;color:var(--muted)">${new Date(o.date).toLocaleDateString('ar-DZ')}</div>
+      <div style="font-size:14px;margin:8px 0">${o.items.map(item => {
+        const p = state.products.find(pr => pr.id === item.productId);
+        return p ? `${state.lang === 'ar' ? p.nameAr : p.nameFr} x${item.qty}` : '';
+      }).filter(Boolean).join(', ')}</div>
+      <div style="font-weight:700;color:var(--green)">${o.total.toLocaleString()} دج</div>
+    </div>
+  `).join('');
+}
+
+function updateProfile(e) {
+  e.preventDefault();
+  if (!state.currentUser) return false;
+  const name = document.getElementById('profName').value.trim();
+  const email = document.getElementById('profEmail').value.trim();
+  const phone = document.getElementById('profPhone').value.trim();
+  const city = document.getElementById('profCity').value.trim();
+  const user = state.customers.find(c => c.id === state.currentUser.id);
+  if (user) {
+    user.name = name; user.email = email; user.phone = phone; user.city = city;
+    state.currentUser = { ...user, role: 'customer' };
+    saveData(); saveUser();
+    showToast(t('profileUpdated'), 'success');
+    renderCustomerDash('profile');
+  }
+  return false;
+}
+
+function dashNav(section) {
+  renderCustomerDash(section);
+  return false;
+}
+
+function copyRefCode(code) {
+  navigator.clipboard.writeText(code).then(() => showToast(t('copied'), 'success')).catch(() => {});
+}
+
+// ========== SUPPLIER DASHBOARD ==========
+function renderSupplierDash(section) {
+  if (!state.currentUser || state.currentUser.role !== 'supplier') { navigate('login'); return; }
+  document.querySelectorAll('#suppDashSidebar .dashboard-nav a').forEach(a => a.classList.remove('active'));
+  const activeLink = document.querySelector(`#suppDashSidebar .dashboard-nav a[data-supp="${section}"]`);
+  if (activeLink) activeLink.classList.add('active');
+  const userInfo = document.getElementById('suppDashUserInfo');
+  const u = state.currentUser;
+  userInfo.innerHTML = `<div class="user-avatar">${u.img || '🏪'}</div><div style="font-weight:600;font-size:14px">${u.name}</div><div style="font-size:12px;color:var(--muted)">${t('supplier')}</div>`;
+  const content = document.getElementById('suppDashContent');
+  const myProducts = state.products.filter(p => p.supplierId === u.id);
+  const myOrders = state.orders.filter(o => o.items.some(item => {
+    const prod = state.products.find(p => p.id === item.productId);
+    return prod && prod.supplierId === u.id;
+  }));
+  if (section === 'overview') {
+    const revenue = myOrders.reduce((sum, o) => sum + o.total, 0);
+    content.innerHTML = `
+      <h2>${t('overview')}</h2>
+      <div class="grid-3" style="margin-bottom:24px">
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--green)">${myProducts.length}</div><div style="font-size:14px;color:var(--muted)">${t('activeProducts')}</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--amber)">${myOrders.length}</div><div style="font-size:14px;color:var(--muted)">${t('ordersReceived')}</div></div>
+        <div class="card" style="padding:20px;text-align:center"><div style="font-size:32px;font-weight:700;color:var(--green)">${revenue.toLocaleString()} دج</div><div style="font-size:14px;color:var(--muted)">${t('totalRevenue')}</div></div>
+      </div>
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card" style="padding:16px">
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:8px">${t('packagingOpt')}</h4>
+          <p style="font-size:14px">${u.packaging === 'platform' ? t('platformPackages') : t('youPackage')}</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <h4 style="font-size:14px;font-weight:600;margin-bottom:8px">${t('paymentMethod')}</h4>
+          <p style="font-size:14px">${u.payment === 'monthly' ? t('monthly') + ' (5000 دج)' : t('perOrderPay') + ' (10%)'}</p>
+        </div>
+      </div>
+      <h3 style="font-size:16px;font-weight:600;margin-bottom:12px">${t('myProducts')} (${myProducts.length})</h3>
+      ${renderSupplierProducts(u.id)}
+    `;
+  } else if (section === 'products') {
+    content.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+        <h2 style="margin:0">${t('myProducts')}</h2>
+        <button class="btn btn-primary" onclick="suppNav('add-product')">+ ${t('addProduct')}</button>
+      </div>
+      ${renderSupplierProducts(u.id)}
+    `;
+  } else if (section === 'add-product' || section === 'edit-product') {
+    renderProductForm(state.editProductId);
+  } else if (section === 'orders') {
+    content.innerHTML = `<h2>${t('ordersReceived')}</h2>
+      ${myOrders.length === 0 ? `
+        <div class="empty-state"><div class="empty-icon">📋</div><h3>${t('noOrders')}</h3><p>${t('noOrdersSub')}</p></div>
+      ` : myOrders.map(o => `
+        <div class="card" style="padding:16px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <span style="font-weight:600">#${o.id} - ${o.customerName}</span>
+            <span class="badge badge-green">${o.status}</span>
+          </div>
+          <div style="font-size:13px;color:var(--muted)">${new Date(o.date).toLocaleDateString('ar-DZ')}</div>
+          <div style="font-size:14px;margin:8px 0">${o.items.filter(item => {
+            const prod = state.products.find(p => p.id === item.productId);
+            return prod && prod.supplierId === u.id;
+          }).map(item => {
+            const p = state.products.find(pr => pr.id === item.productId);
+            return p ? `${state.lang === 'ar' ? p.nameAr : p.nameFr} x${item.qty}` : '';
+          }).filter(Boolean).join(', ')}</div>
+          <div style="font-weight:700;color:var(--green)">${o.total.toLocaleString()} دج</div>
+        </div>
+      `).join('')}
+    `;
+  } else if (section === 'settings') {
+    content.innerHTML = `
+      <h2>${t('settings')}</h2>
+      <form onsubmit="return updateSupplierSettings(event)" style="max-width:500px">
+        <div class="form-group"><label>${t('name')}</label><input type="text" id="suppName" value="${u.name}"></div>
+        <div class="form-group"><label>${t('company')}</label><input type="text" id="suppCompany" value="${u.company || ''}"></div>
+        <div class="form-group"><label>${t('email')}</label><input type="email" id="suppEmail" value="${u.email}"></div>
+        <div class="form-group"><label>${t('phone')}</label><input type="text" id="suppPhone" value="${u.phone || ''}"></div>
+        <div class="form-group"><label>${t('paymentMethod')}</label>
+          <select id="suppPayment">
+            <option value="monthly" ${u.payment === 'monthly' ? 'selected' : ''}>${t('monthlySub')}</option>
+            <option value="per-order" ${u.payment === 'per-order' ? 'selected' : ''}>${t('perOrderPay')}</option>
+          </select>
+        </div>
+        <div class="form-group"><label>${t('packaging')}</label>
+          <select id="suppPackaging">
+            <option value="supplier" ${u.packaging === 'supplier' ? 'selected' : ''}>${t('packagingSelf')}</option>
+            <option value="platform" ${u.packaging === 'platform' ? 'selected' : ''}>${t('packagingPlatform')}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">${t('saveChanges')}</button>
+      </form>
+    `;
+  }
+}
+
+function renderSupplierProducts(supplierId) {
+  const products = state.products.filter(p => p.supplierId === supplierId);
+  if (products.length === 0) {
+    return `<div class="empty-state"><div class="empty-icon">📦</div><h3>${t('noProducts')}</h3><p>${t('noProductsSub')}</p><button class="btn btn-primary" onclick="suppNav('add-product')">${t('addFirstProduct')}</button></div>`;
+  }
+  return products.map(p => `
+    <div class="card" style="padding:16px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="font-size:40px;width:50px;text-align:center">${p.img}</div>
+        <div style="flex:1;min-width:150px">
+          <div style="font-weight:600">${state.lang === 'ar' ? p.nameAr : p.nameFr}</div>
+          <div style="font-size:14px;color:var(--muted)">${p.price.toLocaleString()} دج | ${p.bulkTiers.length} ${t('bulkPrice')}</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline btn-sm" onclick="editSupplierProduct(${p.id})">✏️ ${t('editProduct')}</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteSupplierProduct(${p.id})">🗑</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function editSupplierProduct(productId) {
+  state.editProductId = productId;
+  renderSupplierDash('edit-product');
+}
+
+function deleteSupplierProduct(productId) {
+  if (!confirm(t('confirmDeleteProduct'))) return;
+  state.products = state.products.filter(p => p.id !== productId);
+  saveData();
+  renderSupplierDash('products');
+}
+
+function renderProductForm(editId) {
+  const p = editId ? state.products.find(pr => pr.id === editId) : null;
+  const u = state.currentUser;
+  const isEdit = !!p;
+  const content = document.getElementById('suppDashContent');
+  content.innerHTML = `
+    <h2>${isEdit ? t('editProduct') : t('addProduct')}</h2>
+    <form onsubmit="return saveProductForm(event)" class="form-card" style="margin:0">
+      <div class="form-group"><label>${t('productName')} (عربي)</label><input type="text" id="prodNameAr" required value="${p ? p.nameAr : ''}"></div>
+      <div class="form-group"><label>${t('productName')} (Français)</label><input type="text" id="prodNameFr" required value="${p ? p.nameFr : ''}"></div>
+      <div class="form-row">
+        <div class="form-group"><label>${t('category')}</label>
+          <select id="prodCat">
+            ${state.categories.map(c => `<option value="${c.id}" ${p && p.category === c.id ? 'selected' : ''}>${state.lang === 'ar' ? c.nameAr : c.nameFr}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-group"><label>${t('price')} (دج)</label><input type="number" id="prodPrice" required min="1" value="${p ? p.price : ''}"></div>
+      </div>
+      <div class="form-group"><label>الرمز / الإيقونة</label><input type="text" id="prodImg" value="${p ? p.img : '📦'}"></div>
+      <div class="form-group"><label>الوصف (عربي)</label><textarea id="prodDescAr">${p ? p.descAr : ''}</textarea></div>
+      <div class="form-group"><label>Description (Français)</label><textarea id="prodDescFr">${p ? p.descFr : ''}</textarea></div>
+      <h3 style="font-size:16px;font-weight:600;margin:16px 0 8px">${t('bulkPrice')}</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:12px">أضف تخفيضات حسب الكمية (اترك 0 للحذف)</p>
+      <div id="bulkTiersContainer">
+        ${(p ? p.bulkTiers : [{qty:'',price:''}]).map((tier, i) => `
+          <div class="form-row" style="margin-bottom:8px">
+            <div class="form-group"><label>${t('minQty')}</label><input type="number" class="tier-qty" min="2" value="${tier.qty || ''}" placeholder="مثال: 5"></div>
+            <div class="form-group"><label>${t('price')} (دج)</label><input type="number" class="tier-price" min="1" value="${tier.price || ''}" placeholder="سعر الوحدة"></div>
+          </div>
+        `).join('')}
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="addTierRow()">+ أضف شريحة تخفيض</button>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" onclick="suppNav('products')">${t('cancel')}</button>
+        <button type="submit" class="btn btn-primary">${isEdit ? t('save') : t('addProduct')}</button>
+      </div>
+    </form>
+  `;
+}
+
+function addTierRow() {
+  const container = document.getElementById('bulkTiersContainer');
+  const row = document.createElement('div');
+  row.className = 'form-row';
+  row.style.marginBottom = '8px';
+  row.innerHTML = `
+    <div class="form-group"><label>${t('minQty')}</label><input type="number" class="tier-qty" min="2" placeholder="مثال: 10"></div>
+    <div class="form-group"><label>${t('price')} (دج)</label><input type="number" class="tier-price" min="1" placeholder="سعر الوحدة"></div>
+  `;
+  container.appendChild(row);
+}
+
+function saveProductForm(e) {
+  e.preventDefault();
+  const u = state.currentUser;
+  const isEdit = !!state.editProductId;
+  const nameAr = document.getElementById('prodNameAr').value.trim();
+  const nameFr = document.getElementById('prodNameFr').value.trim();
+  const category = document.getElementById('prodCat').value;
+  const price = parseInt(document.getElementById('prodPrice').value);
+  const img = document.getElementById('prodImg').value.trim() || '📦';
+  const descAr = document.getElementById('prodDescAr').value.trim();
+  const descFr = document.getElementById('prodDescFr').value.trim();
+  const tierQtys = document.querySelectorAll('.tier-qty');
+  const tierPrices = document.querySelectorAll('.tier-price');
+  const bulkTiers = [];
+  for (let i = 0; i < tierQtys.length; i++) {
+    const qty = parseInt(tierQtys[i].value);
+    const tp = parseInt(tierPrices[i].value);
+    if (qty && tp) bulkTiers.push({ qty, price: tp });
+  }
+  bulkTiers.sort((a, b) => a.qty - b.qty);
+  if (isEdit) {
+    const idx = state.products.findIndex(p => p.id === state.editProductId);
+    if (idx !== -1) {
+      state.products[idx] = { ...state.products[idx], nameAr, nameFr, category, price, img, descAr, descFr, bulkTiers };
+    }
+    state.editProductId = null;
+  } else {
+    const newId = Math.max(...state.products.map(p => p.id), 0) + 1;
+    state.products.push({ id: newId, supplierId: u.id, nameAr, nameFr, category, price, img, descAr, descFr, bulkTiers });
+  }
+  saveData();
+  showToast(isEdit ? 'تم تعديل المنتج' : 'تمت إضافة المنتج', 'success');
+  renderSupplierDash('products');
+  return false;
+}
+
+function suppNav(section) {
+  if (section === 'add-product') state.editProductId = null;
+  renderSupplierDash(section);
+  // Update sidebar active state
+  document.querySelectorAll('#suppDashSidebar .dashboard-nav a').forEach(a => a.classList.remove('active'));
+  const link = document.querySelector(`#suppDashSidebar .dashboard-nav a[data-supp="${section}"]`);
+  if (link) link.classList.add('active');
+  return false;
+}
+
+function updateSupplierSettings(e) {
+  e.preventDefault();
+  if (!state.currentUser) return false;
+  const name = document.getElementById('suppName').value.trim();
+  const company = document.getElementById('suppCompany').value.trim();
+  const email = document.getElementById('suppEmail').value.trim();
+  const phone = document.getElementById('suppPhone').value.trim();
+  const payment = document.getElementById('suppPayment').value;
+  const packaging = document.getElementById('suppPackaging').value;
+  const user = state.suppliers.find(s => s.id === state.currentUser.id);
+  if (user) {
+    user.name = name; user.company = company; user.email = email;
+    user.phone = phone; user.payment = payment; user.packaging = packaging;
+    state.currentUser = { ...user, role: 'supplier' };
+    saveData(); saveUser();
+    showToast(t('profileUpdated'), 'success');
+    renderSupplierDash('settings');
+  }
+  return false;
+}
+
+// ========== INIT ON LOAD ==========
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
