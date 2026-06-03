@@ -354,7 +354,7 @@ textarea{resize:vertical;min-height:80px}
         <div class="hero">
           <div class="hero-content">
             <h1>في لمتنا قوة ... <span>و في جماعتنا وفر</span></h1>
-            <p>في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.</p>
+            <p>في لمتنا قوة و في جماعتنا وفر. منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا.</p>
             <div class="hero-actions">
               <a href="#products" class="btn btn-primary btn-lg" onclick="return navigate('products')">تصفح المنتجات</a>
               <a href="#how-it-works" class="btn btn-outline btn-lg" onclick="return navigate('how-it-works')">كيف يعمل</a>
@@ -500,7 +500,7 @@ textarea{resize:vertical;min-height:80px}
       <div class="container" style="padding-top:40px">
         <div class="section-header">
           <h2>كيف يعمل جمّع؟</h2>
-          <p>منصة الشراء الجماعي الأولى في الجزائر</p>
+          <p>منصة الشراء الجماعي </p>
         </div>
         <div class="grid-2" style="max-width:800px;margin:0 auto">
           <div class="card" style="padding:32px">
@@ -667,7 +667,7 @@ textarea{resize:vertical;min-height:80px}
       <div class="footer-grid">
         <div>
           <h3 style="font-size:20px;font-weight:800;color:#fff">جمّع <span style="color:var(--amber)">Jamma3</span></h3>
-          <p style="font-size:14px;margin-bottom:16px">أول منصة شراء جماعي في الجزائر. نوصل المنتجين بالمشترين بأفضل الأسعار.</p>
+          <p style="font-size:14px;margin-bottom:16px">منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا .</p>
         </div>
         <div>
           <h3>روابط سريعة</h3>
@@ -798,7 +798,7 @@ const T = {
   navHow:{ar:'كيف يعمل',fr:'Comment ça marche'},
 heroTitle:{ar:'في لمتنا قوة ...',fr:'Dans notre groupe, la force...'},
       heroTitle2:{ar:'و في جماعتنا وفر',fr:'et dans notre communauté, des économies'},
-      heroSub:{ar:'في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.',fr:'Dans notre groupe il y a la force, dans notre communauté des économies. Première plateforme d\'achat groupé en Algérie qui réunit les acheteurs pour les meilleurs prix.'},
+      heroSub:{ar:'في لمتنا قوة و في جماعتنا وفر. منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا.',fr:'Dans notre groupe il y a la force, dans notre communauté des économies. Première plateforme d\'achat groupé en Algérie qui réunit les acheteurs pour les meilleurs prix.'},
   browse:{ar:'تصفح المنتجات',fr:'Parcourir les produits'},
   howWorks:{ar:'كيف يعمل',fr:'Comment ça marche'},
   browseCat:{ar:'تصفح حسب الفئة',fr:'Parcourir par catégorie'},
@@ -1132,7 +1132,7 @@ function updateHowItWorks() {
   const h2 = section.querySelector('.section-header h2');
   const p = section.querySelector('.section-header p');
   if (h2) h2.textContent = state.lang === 'ar' ? 'كيف يعمل جمّع؟' : 'Comment fonctionne Jamma3 ?';
-  if (p) p.textContent = state.lang === 'ar' ? 'منصة الشراء الجماعي الأولى في الجزائر' : 'Première plateforme d\'achat groupé en Algérie';
+  if (p) p.textContent = state.lang === 'ar' ? 'منصة الشراء الجماعي  في الجزائر' : 'Première plateforme d\'achat groupé en Algérie';
   const cards = section.querySelectorAll('.card');
   if (cards.length >= 2) {
     cards[0].querySelector('h3').textContent = t('howForBuyers');
