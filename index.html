@@ -111,6 +111,8 @@ textarea{resize:vertical;min-height:80px}
 .header-logo{display:flex;align-items:center;gap:8px;font-size:24px;font-weight:800;color:var(--green);letter-spacing:-0.5px}
 .header-logo span{color:var(--amber);position:relative}
 .header-logo span::after{content:'●';position:absolute;top:-4px;right:-8px;font-size:8px;color:var(--amber)}
+.header-logo img{height:50px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(212,120,92,0.4));animation:logoGlow 2s ease-in-out infinite alternate}
+@keyframes logoGlow{0%{filter:drop-shadow(0 0 6px rgba(212,120,92,0.3));transform:scale(1)}100%{filter:drop-shadow(0 0 16px rgba(212,120,92,0.6));transform:scale(1.03)}}
 .header-nav{display:flex;align-items:center;gap:4px}
 .header-nav a{padding:8px 14px;border-radius:8px;color:var(--text-secondary);font-size:14px;font-weight:500;transition:var(--transition)}
 .header-nav a:hover,.header-nav a.active{color:var(--text);background:var(--border)}
@@ -326,7 +328,8 @@ textarea{resize:vertical;min-height:80px}
   <header class="header">
     <div class="container header-inner">
       <a href="#home" class="header-logo" onclick="return navigate('home')">
-        جمّع <span>Jamma3</span>
+        <img src="IMG-20260604-WA0000.jpg" alt="Jamma3">
+        <span>Jamma3</span>
       </a>
       <nav class="header-nav" id="mainNav">
         <a href="#home" data-page="home" onclick="return navigate('home')" class="active">الرئيسية</a>
@@ -354,81 +357,14 @@ textarea{resize:vertical;min-height:80px}
         <div class="hero">
           <div class="hero-content">
             <h1>في لمتنا قوة ... <span>و في جماعتنا وفر</span></h1>
-            <p>في لمتنا قوة و في جماعتنا وفر. منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا.</p>
+            <p>في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.</p>
             <div class="hero-actions">
               <a href="#products" class="btn btn-primary btn-lg" onclick="return navigate('products')">تصفح المنتجات</a>
               <a href="#how-it-works" class="btn btn-outline btn-lg" onclick="return navigate('how-it-works')">كيف يعمل</a>
             </div>
           </div>
           <div class="hero-visual">
-            <svg viewBox="0 0 420 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Outer glow rings -->
-              <circle cx="210" cy="185" r="170" fill="rgba(30,58,95,0.03)"/>
-              <circle cx="210" cy="185" r="130" fill="rgba(212,120,92,0.05)"/>
-              <circle cx="210" cy="185" r="90" fill="rgba(30,58,95,0.04)"/>
-
-              <!-- Three people figures coming together (group buying) -->
-              <!-- Person 1 - left -->
-              <g transform="translate(125, 140)">
-                <circle cx="0" cy="-38" r="18" fill="#1E3A5F"/>
-                <path d="M-22 15 C-22 -10 22 -10 22 15 L22 40 L18 40 L18 25 L-18 25 L-18 40 L-22 40 Z" fill="#1E3A5F" opacity="0.85"/>
-                <circle cx="-12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
-                <circle cx="12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
-              </g>
-
-              <!-- Person 2 - center (highlighted) -->
-              <g transform="translate(210, 130)">
-                <circle cx="0" cy="-42" r="20" fill="#D4785C"/>
-                <path d="M-24 15 C-24 -12 24 -12 24 15 L24 45 L20 45 L20 28 L-20 28 L-20 45 L-24 45 Z" fill="#D4785C" opacity="0.9"/>
-                <circle cx="-10" cy="-42" r="3.5" fill="#fff" opacity="0.8"/>
-                <circle cx="10" cy="-42" r="3.5" fill="#fff" opacity="0.8"/>
-              </g>
-
-              <!-- Person 3 - right -->
-              <g transform="translate(295, 140)">
-                <circle cx="0" cy="-38" r="18" fill="#1E3A5F"/>
-                <path d="M-22 15 C-22 -10 22 -10 22 15 L22 40 L18 40 L18 25 L-18 25 L-18 40 L-22 40 Z" fill="#1E3A5F" opacity="0.85"/>
-                <circle cx="-12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
-                <circle cx="12" cy="-38" r="3" fill="#fff" opacity="0.8"/>
-              </g>
-
-              <!-- Connecting lines (community bond) -->
-              <path d="M147 140 Q180 100 210 120" stroke="#D4785C" stroke-width="2" stroke-dasharray="5,4" opacity="0.4"/>
-              <path d="M273 140 Q240 100 210 120" stroke="#D4785C" stroke-width="2" stroke-dasharray="5,4" opacity="0.4"/>
-              <line x1="160" y1="165" x2="260" y2="165" stroke="#1E3A5F" stroke-width="1.5" opacity="0.15"/>
-
-              <!-- Shopping bag icon at bottom center -->
-              <g transform="translate(190, 210)">
-                <rect x="0" y="8" width="40" height="35" rx="6" fill="#1E3A5F" opacity="0.12" stroke="#1E3A5F" stroke-width="2" stroke-opacity="0.2"/>
-                <path d="M8 8 C8 -2 32 -2 32 8" fill="none" stroke="#1E3A5F" stroke-width="2" stroke-opacity="0.2"/>
-                <path d="M14 18 L26 18" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M14 25 L26 25" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M14 32 L22 32" stroke="#D4785C" stroke-width="2.5" stroke-linecap="round"/>
-              </g>
-
-              <!-- Price / discount sparkles -->
-              <g transform="translate(100, 240)" opacity="0.6">
-                <text font-size="14" fill="#D4785C" font-weight="700">-30%</text>
-              </g>
-              <g transform="translate(290, 240)" opacity="0.6">
-                <text font-size="14" fill="#1E3A5F" font-weight="700">-40%</text>
-              </g>
-
-              <!-- Floating decorative dots -->
-              <circle cx="80" cy="100" r="4" fill="#D4785C" opacity="0.2"/>
-              <circle cx="340" cy="100" r="4" fill="#1E3A5F" opacity="0.2"/>
-              <circle cx="70" cy="320" r="3" fill="#D4785C" opacity="0.15"/>
-              <circle cx="350" cy="320" r="3" fill="#1E3A5F" opacity="0.15"/>
-              <circle cx="210" cy="340" r="5" fill="#D4785C" opacity="0.1"/>
-              <circle cx="145" cy="90" r="2.5" fill="#1E3A5F" opacity="0.1"/>
-              <circle cx="275" cy="85" r="2.5" fill="#D4785C" opacity="0.12"/>
-
-              <!-- Brand name at bottom -->
-              <g transform="translate(210, 378)">
-                <text text-anchor="middle" font-size="28" font-weight="800" fill="#1E3A5F" font-family="system-ui, sans-serif" letter-spacing="1">جمّع</text>
-                <text text-anchor="middle" font-size="16" font-weight="600" fill="#D4785C" font-family="system-ui, sans-serif" y="24">Jamma3</text>
-              </g>
-            </svg>
+            <img src="image.jpg" alt="Jamma3" style="max-width:100%;height:auto;border-radius:var(--radius)">
           </div>
         </div>
 
@@ -500,7 +436,7 @@ textarea{resize:vertical;min-height:80px}
       <div class="container" style="padding-top:40px">
         <div class="section-header">
           <h2>كيف يعمل جمّع؟</h2>
-          <p>منصة الشراء الجماعي </p>
+          <p>منصة الشراء الجماعي الأولى في الجزائر</p>
         </div>
         <div class="grid-2" style="max-width:800px;margin:0 auto">
           <div class="card" style="padding:32px">
@@ -667,7 +603,7 @@ textarea{resize:vertical;min-height:80px}
       <div class="footer-grid">
         <div>
           <h3 style="font-size:20px;font-weight:800;color:#fff">جمّع <span style="color:var(--amber)">Jamma3</span></h3>
-          <p style="font-size:14px;margin-bottom:16px">منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا .</p>
+          <p style="font-size:14px;margin-bottom:16px">أول منصة شراء جماعي في الجزائر. نوصل المنتجين بالمشترين بأفضل الأسعار.</p>
         </div>
         <div>
           <h3>روابط سريعة</h3>
@@ -798,7 +734,7 @@ const T = {
   navHow:{ar:'كيف يعمل',fr:'Comment ça marche'},
 heroTitle:{ar:'في لمتنا قوة ...',fr:'Dans notre groupe, la force...'},
       heroTitle2:{ar:'و في جماعتنا وفر',fr:'et dans notre communauté, des économies'},
-      heroSub:{ar:'في لمتنا قوة و في جماعتنا وفر. منصة شراء جماعي تمنحك أفضل المنتجات بأسعار أفضل ... عندما نشتري معا.',fr:'Dans notre groupe il y a la force, dans notre communauté des économies. Première plateforme d\'achat groupé en Algérie qui réunit les acheteurs pour les meilleurs prix.'},
+      heroSub:{ar:'في لمتنا قوة و في جماعتنا وفر. أول منصة شراء جماعي في الجزائر تجمع المشترين لتوفير أفضل الأسعار.',fr:'Dans notre groupe il y a la force, dans notre communauté des économies. Première plateforme d\'achat groupé en Algérie qui réunit les acheteurs pour les meilleurs prix.'},
   browse:{ar:'تصفح المنتجات',fr:'Parcourir les produits'},
   howWorks:{ar:'كيف يعمل',fr:'Comment ça marche'},
   browseCat:{ar:'تصفح حسب الفئة',fr:'Parcourir par catégorie'},
@@ -1132,7 +1068,7 @@ function updateHowItWorks() {
   const h2 = section.querySelector('.section-header h2');
   const p = section.querySelector('.section-header p');
   if (h2) h2.textContent = state.lang === 'ar' ? 'كيف يعمل جمّع؟' : 'Comment fonctionne Jamma3 ?';
-  if (p) p.textContent = state.lang === 'ar' ? 'منصة الشراء الجماعي  في الجزائر' : 'Première plateforme d\'achat groupé en Algérie';
+  if (p) p.textContent = state.lang === 'ar' ? 'منصة الشراء الجماعي الأولى في الجزائر' : 'Première plateforme d\'achat groupé en Algérie';
   const cards = section.querySelectorAll('.card');
   if (cards.length >= 2) {
     cards[0].querySelector('h3').textContent = t('howForBuyers');
